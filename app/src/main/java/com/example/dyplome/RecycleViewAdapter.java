@@ -1,5 +1,6 @@
 package com.example.dyplome;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,36 +10,36 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter> {
+public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
-    private List<String> mData;
-    private LayoutInflater mInflater;
+    private ArrayList<String> mData;
     private ItemClickListener mClickListener;
 
-    public RecycleViewAdapter(List<String> mData, LayoutInflater mInflater) {
+    public RecycleViewAdapter(ArrayList<String> mData) {
         this.mData = mData;
-        this.mInflater = mInflater;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.rw_item, parent, false);
-        return new ViewHolder(view);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rw_item, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecycleViewAdapter holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String tests = mData.get(position);
-
+        holder.myTextView.setText(tests);
 
     }
+
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mData.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
