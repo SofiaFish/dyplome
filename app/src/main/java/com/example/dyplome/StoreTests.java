@@ -4,9 +4,6 @@ import android.provider.BaseColumns;
 
 public class StoreTests {
 
-    private StoreTests() {
-    }
-
     public static class Test implements BaseColumns {
         public static final int ID = 0;
         public static final String TABLE_NAME = "test";
@@ -32,13 +29,13 @@ public class StoreTests {
         private static final int DATABASE_VERSION = 1;
     }
 
-    private static final String SQL_CREATE_TEST =
+    public static final String SQL_CREATE_TEST =
             "CREATE TABLE " + Test.TABLE_NAME + " (" +
                     Test.ID + " INTEGER PRIMARY KEY," +
                     Test.NAME + " TEXT" +
                     Test.DATABASE_VERSION + "INTEGER)";
 
-    private static final String SQL_CREATE_QUESTION =
+    public static final String SQL_CREATE_QUESTION =
             "CREATE TABLE " + Test.TABLE_NAME + " (" +
                     Question.ID + " INTEGER PRIMARY KEY," +
                     Question.ID_TEST + "INTEGER" +
@@ -46,7 +43,7 @@ public class StoreTests {
                     Question.QUESTION + "TEXT" +
                     Question.DATABASE_VERSION + "INTEGER)";
 
-    private static final String SQL_CREATE_ANSWER =
+    public static final String SQL_CREATE_ANSWER =
             "CREATE TABLE " + Answer.TABLE_NAME + " (" +
                     Answer.ID + " INTEGER PRIMARY KEY," +
                     Answer.ID_QUESTION + " INTEGER" +

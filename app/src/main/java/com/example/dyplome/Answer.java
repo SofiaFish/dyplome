@@ -12,4 +12,20 @@ public class Answer {
         this.text = text;
         this.score = score;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getId_question() {
+        return id_question;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
