@@ -31,7 +31,6 @@ public class StoreTests {
         public static final String SCORE = "score";
     }
 
-
     public static class TestQuestion implements BaseColumns {
         public static final String QUESTION_ID = "question_id";
         public static final String TEST_ID = "test_id";
@@ -76,19 +75,32 @@ public class StoreTests {
                     Answer.SCORE + "INTEGER)";
 
 
+
+    //TASK_CAT + " integer,"
+    //        + " FOREIGN KEY ("+TASK_CAT+") REFERENCES "+CAT_TABLE+"("+CAT_ID+"));";
+
     public static final String SQL_CREATE_TEST_QUESTION =
             "CREATE TABLE " + TestQuestion.TABLE_NAME + " (" +
-                    TestQuestion.QUESTION_ID + " INTEGER PRIMARY KEY," +
-                    TestQuestion.TEST_ID + " INTEGER PRIMARY KEY)";
+                    TestQuestion.QUESTION_ID + " INTEGER," + "FOREIGN KEY (" + TestQuestion.QUESTION_ID + ") REFERECES " +
+                    Question.TABLE_NAME + "(" + Question.ID + ")" +
+                    TestQuestion.TEST_ID + " INTEGER," + "FOREIGN KEY (" + TestQuestion.TEST_ID + ") REFERECES " +
+                    Test.TABLE_NAME + "(" + Test.ID + ")";
 
     public static final String SQL_CREATE_QUESTION_ANSWER =
             "CREATE TABLE " + QuestionAnswer.TABLE_NAME + " (" +
-                    QuestionAnswer.QUESTION_ID + " INTEGER PRIMARY KEY," +
-                    QuestionAnswer.ANSWER_ID + " INTEGER PRIMARY KEY)";
+                    QuestionAnswer.QUESTION_ID + " INTEGER," +
+                    "FOREIGN KEY (" + QuestionAnswer.QUESTION_ID + ") REFERECES " +
+                    Question.TABLE_NAME + "(" + Question.ID + ")" +
+                    QuestionAnswer.ANSWER_ID + " INTEGER," + "FOREIGN KEY (" + QuestionAnswer.ANSWER_ID + ") REFERECES " +
+                    Answer.TABLE_NAME + "(" + Answer.ID + ")";
 
     public static final String SQL_CREATE_SCORE_TEST =
             "CREATE TABLE " + ScoreTest.TABLE_NAME + " (" +
-                    ScoreTest.SCORE_ID + " INTEGER PRIMARY KEY," +
-                    ScoreTest.TEST_ID + " INTEGER PRIMARY KEY)";
+                    ScoreTest.SCORE_ID + " INTEGER," +
+                    "FOREIGN KEY (" + ScoreTest.TEST_ID + ") REFERECES " +
+                    Test.TABLE_NAME + "(" + Test.ID + ")" +
+                    ScoreTest.SCORE_ID + " INTEGER," +
+                    "FOREIGN KEY (" + ScoreTest.SCORE_ID + ") REFERECES " +
+                    Score.TABLE_NAME + "(" + Score.ID + ")";
 
 }
