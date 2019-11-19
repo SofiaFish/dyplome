@@ -9,9 +9,11 @@ public class Test {
 
     //Триада, Шкала Бека, Идеоторная заторможенность Гамильтон, Враждебность, Скорость реакции, настроение
 
-    String question;
-    ArrayList<String> answer;
+    int id;
+    String name;
 
-
-
+    public Test(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

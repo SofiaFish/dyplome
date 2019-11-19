@@ -16,7 +16,7 @@ public class StoreTestsDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-       // private static final int DATABASE_VERSION = 1;
+
     }
 
     @Override
