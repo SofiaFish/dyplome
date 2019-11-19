@@ -31,6 +31,26 @@ public class StoreTests {
         public static final String SCORE = "score";
     }
 
+
+    public static class TestQuestion implements BaseColumns {
+        public static final String QUESTION_ID = "question_id";
+        public static final String TEST_ID = "test_id";
+        public static final String TABLE_NAME = "testQuestion";
+    }
+
+    public static class QuestionAnswer implements BaseColumns {
+        public static final String QUESTION_ID = "question_id";
+        public static final String ANSWER_ID = "answer_id";
+        public static final String TABLE_NAME = "questionAnswer";
+    }
+
+    public static class ScoreTest implements BaseColumns {
+        public static final String TEST_ID = "test_id";
+        public static final String SCORE_ID = "score_id";
+        public static final String TABLE_NAME = "test";
+    }
+
+
     public static final String SQL_CREATE_TEST =
             "CREATE TABLE " + Test.TABLE_NAME + " (" +
                     Test.ID + " INTEGER PRIMARY KEY," +
@@ -56,5 +76,19 @@ public class StoreTests {
                     Answer.SCORE + "INTEGER)";
 
 
+    public static final String SQL_CREATE_TEST_QUESTION =
+            "CREATE TABLE " + TestQuestion.TABLE_NAME + " (" +
+                    TestQuestion.QUESTION_ID + " INTEGER PRIMARY KEY," +
+                    TestQuestion.TEST_ID + " INTEGER PRIMARY KEY)";
+
+    public static final String SQL_CREATE_QUESTION_ANSWER =
+            "CREATE TABLE " + QuestionAnswer.TABLE_NAME + " (" +
+                    QuestionAnswer.QUESTION_ID + " INTEGER PRIMARY KEY," +
+                    QuestionAnswer.ANSWER_ID + " INTEGER PRIMARY KEY)";
+
+    public static final String SQL_CREATE_SCORE_TEST =
+            "CREATE TABLE " + ScoreTest.TABLE_NAME + " (" +
+                    ScoreTest.SCORE_ID + " INTEGER PRIMARY KEY," +
+                    ScoreTest.TEST_ID + " INTEGER PRIMARY KEY)";
 
 }
