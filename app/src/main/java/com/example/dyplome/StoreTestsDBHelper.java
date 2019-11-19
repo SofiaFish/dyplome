@@ -38,10 +38,31 @@ public class StoreTestsDBHelper extends SQLiteOpenHelper {
 //        db.close();
 //    }
 
-    @Override
+    ContentValues values = new ContentValues();
     public void addTest(Test test){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(StoreTests.Test.ID, );
+        values.put(StoreTests.Test.ID, test.getId());
+        values.put(StoreTests.Test.NAME, test.getName());
+    }
+
+    public void addQuestion(Question question){
+        SQLiteDatabase db = this.getWritableDatabase();
+        values.put(StoreTests.Question.ID, question.getId());
+        values.put(StoreTests.Question.ID_TEST, question.getId_test());
+        values.put(StoreTests.Question.QUESTION, question.getQuestion());
+    }
+
+    public void addAnswer(Answer answer){
+        SQLiteDatabase db = this.getWritableDatabase();
+        values.put(StoreTests.Answer.ID, answer.getId());
+        values.put(StoreTests.Answer.ID_QUESTION, answer.getId_question());
+        values.put(StoreTests.Answer.ANSWER, answer.getText());
+        values.put(StoreTests.Answer.SCORE, answer.getScore());
+    }
+
+    public void addScore(Score score){
+        SQLiteDatabase db = this.getWritableDatabase();
+        values.put(StoreTests.Score.ID, score.getId());
+        values.put(StoreTests.Score.ID_TEST, score.getId_test());
     }
 }
