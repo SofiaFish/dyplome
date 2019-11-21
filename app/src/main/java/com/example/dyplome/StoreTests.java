@@ -81,26 +81,26 @@ public class StoreTests {
 
     public static final String SQL_CREATE_TEST_QUESTION =
             "CREATE TABLE " + TestQuestion.TABLE_NAME + " (" +
-                    TestQuestion.QUESTION_ID + " INTEGER," + "FOREIGN KEY (" + TestQuestion.QUESTION_ID + ") REFERECES " +
+                    TestQuestion.QUESTION_ID + " INTEGER," + "FOREIGN KEY (" + TestQuestion.QUESTION_ID + ") REFERENCES " +
                     Question.TABLE_NAME + "(" + Question.ID + ")" +
-                    TestQuestion.TEST_ID + " INTEGER," + "FOREIGN KEY (" + TestQuestion.TEST_ID + ") REFERECES " +
+                    TestQuestion.TEST_ID + " INTEGER," + "FOREIGN KEY (" + TestQuestion.TEST_ID + ") REFERENCES " +
                     Test.TABLE_NAME + "(" + Test.ID + ")";
 
     public static final String SQL_CREATE_QUESTION_ANSWER =
             "CREATE TABLE " + QuestionAnswer.TABLE_NAME + " (" +
                     QuestionAnswer.QUESTION_ID + " INTEGER," +
-                    "FOREIGN KEY (" + QuestionAnswer.QUESTION_ID + ") REFERECES " +
+                    "FOREIGN KEY (" + QuestionAnswer.QUESTION_ID + ") REFERENCES " +
                     Question.TABLE_NAME + "(" + Question.ID + ")" +
-                    QuestionAnswer.ANSWER_ID + " INTEGER," + "FOREIGN KEY (" + QuestionAnswer.ANSWER_ID + ") REFERECES " +
+                    QuestionAnswer.ANSWER_ID + " INTEGER," + "FOREIGN KEY (" + QuestionAnswer.ANSWER_ID + ") REFERENCES " +
                     Answer.TABLE_NAME + "(" + Answer.ID + ")";
 
     public static final String SQL_CREATE_SCORE_TEST =
             "CREATE TABLE " + ScoreTest.TABLE_NAME + " (" +
                     ScoreTest.SCORE_ID + " INTEGER," +
-                    "FOREIGN KEY (" + ScoreTest.TEST_ID + ") REFERECES " +
+                    "FOREIGN KEY (" + ScoreTest.TEST_ID + ") REFERENCES " +
                     Test.TABLE_NAME + "(" + Test.ID + ")" +
                     ScoreTest.SCORE_ID + " INTEGER," +
-                    "FOREIGN KEY (" + ScoreTest.SCORE_ID + ") REFERECES " +
+                    "FOREIGN KEY (" + ScoreTest.SCORE_ID + ") REFERENCES " +
                     Score.TABLE_NAME + "(" + Score.ID + ")";
 
 }
