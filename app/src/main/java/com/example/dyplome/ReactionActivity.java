@@ -19,7 +19,7 @@ public class ReactionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reaction);
 
-        layout.findViewById(R.id.layout);
+        layout = findViewById(R.id.layout);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -31,12 +31,12 @@ public class ReactionActivity extends AppCompatActivity {
         }, 3000);
 
 
-        layout.setBackgroundColor(Color.YELLOW);
+
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 long measure = System.currentTimeMillis() - start;
-                Toast.makeText(ReactionActivity.this, measure + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReactionActivity.this, measure/1000 + " c. медленный лох.", Toast.LENGTH_SHORT).show();
             }
         });
     }
