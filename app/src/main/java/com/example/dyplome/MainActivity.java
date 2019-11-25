@@ -44,11 +44,11 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
     @Override
     public void onItemClick(View view, int position) {
 
+        DbCreator dbCreator = new DbCreator();
         Intent intent = new Intent(MainActivity.this, TestActivity.class);
         switch (testName){
             case "Шкала Бека":
                 startActivity(intent);
-
                 break;
             case "Шкала Гамильтона":
                 startActivity(intent);
