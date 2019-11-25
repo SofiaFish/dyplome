@@ -1,6 +1,5 @@
 package com.example.dyplome;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,15 +7,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
     private ArrayList<String> mData;
-    private ItemClickListener mClickListener;
+//    private ItemClickListener mClickListener;
 
     public RecycleViewAdapter(ArrayList<String> mData) {
         this.mData = mData;
@@ -42,35 +39,34 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         return mData.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView myTextView;
 
-        MyViewHolder(View itemView) {
+        MyViewHolder(final View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.test1);
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-            if(mClickListener != null)
-                mClickListener.onItemClick(v, getAdapterPosition());
-        }
+//        @Override
+//        public void onClick(View v) {
+//            if(mClickListener != null)
+//                mClickListener.onItemClick(v, getAdapterPosition());
+//        }
     }
 
     String getItem(int id){
         return mData.get(id);
     }
 
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
+//    void setClickListener(ItemClickListener itemClickListener) {
+//        this.mClickListener = itemClickListener;
+//    }
+//
+//
+//    public interface ItemClickListener {
+//        void onItemClick(View view, int position);
+//    }
 
 }
 

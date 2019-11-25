@@ -1,9 +1,4 @@
-package com.example.dyplome;
-
-import android.widget.ArrayAdapter;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+package com.example.dyplome.model;
 
 public class Test {
 

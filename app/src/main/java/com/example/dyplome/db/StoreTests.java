@@ -1,4 +1,4 @@
-package com.example.dyplome;
+package com.example.dyplome.db;
 
 import android.provider.BaseColumns;
 

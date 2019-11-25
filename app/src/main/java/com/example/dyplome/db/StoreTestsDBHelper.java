@@ -1,4 +1,4 @@
-package com.example.dyplome;
+package com.example.dyplome.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,9 +20,9 @@ public class StoreTestsDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         DbCreator creator = new DbCreator(getWritableDatabase());
-        creator.create();
+        creator.createBeck();
+        creator.createHamilton();
     }
 
     @Override

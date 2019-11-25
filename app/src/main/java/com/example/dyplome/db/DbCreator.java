@@ -1,7 +1,12 @@
-package com.example.dyplome;
+package com.example.dyplome.db;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.dyplome.model.Answer;
+import com.example.dyplome.model.Question;
+import com.example.dyplome.model.Score;
+import com.example.dyplome.model.Test;
 
 public class DbCreator {
 
@@ -313,7 +318,7 @@ public class DbCreator {
         values.put(StoreTests.Answer.ANSWER, answer.getText());
         values.put(StoreTests.Answer.SCORE, answer.getScore());
 
-        long newRowId = db.insert(StoreTests.Answer.TABLE_NAME, null, values);
+       // long newRowId = db.insert(StoreTests.Answer.TABLE_NAME, null, values);
         db.close();
     }
 

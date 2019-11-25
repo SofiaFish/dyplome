@@ -1,8 +1,10 @@
-package com.example.dyplome;
+package com.example.dyplome.activityes;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dyplome.R;
 
 public class TestActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.dyplome;
+package com.example.dyplome.model;
 
 public class Answer {
     int id;
