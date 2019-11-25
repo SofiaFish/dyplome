@@ -13,6 +13,8 @@ public class ReactionActivity extends AppCompatActivity {
 
     LinearLayout layout;
     long start;
+    long stop;
+    int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +27,10 @@ public class ReactionActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                layout.setBackgroundColor(Color.GREEN);
+                layout.setBackgroundColor(Color.YELLOW);
                 start = System.currentTimeMillis();
+                layout.setBackgroundColor(Color.RED);
+
             }
         }, 3000);
 
@@ -36,7 +40,7 @@ public class ReactionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 long measure = System.currentTimeMillis() - start;
-                Toast.makeText(ReactionActivity.this, measure/1000 + " c. медленный лох.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReactionActivity.this, measure + " ms. медленный лох.", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -1,14 +1,12 @@
 package com.example.dyplome;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -16,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
 
     RecycleViewAdapter adapter;
     RecyclerView testsList;
+    String testName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
         ArrayList<String> list_test = new ArrayList<>();
         list_test.add("Шкала Бека");
         list_test.add("Шкала Гамильтона");
-        list_test.add("Тест Басса-Дарки");
         list_test.add("Тест на реакцию");
 
 
@@ -45,8 +43,24 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent(MainActivity.this, BeckScaleActivity.class);
-        startActivity(intent);
+
+        Intent intent = new Intent(MainActivity.this, TestActivity.class);
+        switch (testName){
+            case "Шкала Бека":
+                startActivity(intent);
+
+                break;
+            case "Шкала Гамильтона":
+                startActivity(intent);
+                break;
+            case "Тест на реакцию":
+                Intent intnt = new Intent(MainActivity.this, ReactionActivity.class);
+                startActivity(intnt);
+                break;
+
+        }
+
+
     }
 
 
