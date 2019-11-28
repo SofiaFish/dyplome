@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class StoreTestsDBHelper extends SQLiteOpenHelper {
 
-   // StoreTests storeTests = new StoreTests();
+   // MyDB storeTests = new MyDB();
 
     public static final String DB_NAME = "appDB";
     public static final int DB_VERSION = 1;

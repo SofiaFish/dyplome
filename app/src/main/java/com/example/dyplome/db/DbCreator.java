@@ -296,37 +296,41 @@ public class DbCreator {
     ContentValues values = new ContentValues();
 
     public void addTest(Test test){
-        values.put(StoreTests.Test.ID, test.getId());
-        values.put(StoreTests.Test.NAME, test.getName());
+        values.put(MyDB.Test.ID, test.getId());
+        values.put(MyDB.Test.NAME, test.getName());
 
-        db.insert(StoreTests.Test.TABLE_NAME, null, values);
+        db.insert(MyDB.Test.TABLE_NAME, null, values);
         db.close();
     }
 
     public void addQuestion(Question question){
-        values.put(StoreTests.Question.ID, question.getId());
-        values.put(StoreTests.Question.ID_TEST, question.getId_test());
-        values.put(StoreTests.Question.QUESTION, question.getQuestion());
+        values.put(MyDB.Question.ID, question.getId());
+        values.put(MyDB.Question.ID_TEST, question.getId_test());
+        values.put(MyDB.Question.QUESTION, question.getQuestion());
 
-        db.insert(StoreTests.Question.TABLE_NAME, null, values);
+        db.insert(MyDB.Question.TABLE_NAME, null, values);
         db.close();
     }
 
     public void addAnswer(Answer answer){
-        values.put(StoreTests.Answer.ID, answer.getId());
-        values.put(StoreTests.Answer.ID_QUESTION, answer.getId_question());
-        values.put(StoreTests.Answer.ANSWER, answer.getText());
-        values.put(StoreTests.Answer.SCORE, answer.getScore());
+        values.put(MyDB.Answer.ID, answer.getId());
+        values.put(MyDB.Answer.ID_QUESTION, answer.getId_question());
+        values.put(MyDB.Answer.ANSWER, answer.getText());
+        values.put(MyDB.Answer.SCORE, answer.getScore());
 
-       // long newRowId = db.insert(StoreTests.Answer.TABLE_NAME, null, values);
+       // long newRowId = db.insert(MyDB.Answer.TABLE_NAME, null, values);
         db.close();
     }
 
     public void addScore(Score score){
-        values.put(StoreTests.Score.ID, score.getId());
-        values.put(StoreTests.Score.ID_TEST, score.getId_test());
+        values.put(MyDB.Score.ID, score.getId());
+        values.put(MyDB.Score.ID_TEST, score.getId_test());
 
-        db.insert(StoreTests.Score.TABLE_NAME, null, values);
+        db.insert(MyDB.Score.TABLE_NAME, null, values);
         db.close();
+    }
+
+    public void addGender(){
+
     }
 }
