@@ -3,10 +3,13 @@ package com.example.dyplome.db;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.dyplome.model.Age;
 import com.example.dyplome.model.Answer;
+import com.example.dyplome.model.Gender;
 import com.example.dyplome.model.Question;
 import com.example.dyplome.model.Score;
 import com.example.dyplome.model.Test;
+import com.example.dyplome.model.Weight;
 
 public class DbCreator {
 
@@ -330,7 +333,19 @@ public class DbCreator {
         db.close();
     }
 
-    public void addGender(){
-
+    public void addGender(Gender gender){
+        values.put(MyDB.Gender.ID, gender.getId());
+        values.put(MyDB.Gender.GENDER, gender.getGender());
     }
+
+    public void addAge(Age age){
+        values.put(MyDB.Age.ID, age.getId());
+        values.put(MyDB.Age.AGE, age.getAge());
+    }
+    public void addWeight(Weight weight){
+        values.put(MyDB.Weight.ID, weight.getId());
+        values.put(MyDB.Weight.WEIGHT, weight.getWeight());
+    }
+
+
 }
