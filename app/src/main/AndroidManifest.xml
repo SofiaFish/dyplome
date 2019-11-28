@@ -11,9 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activityes.TestActivity"></activity>
-        <activity android:name=".activityes.ReactionActivity"></activity>
-        <activity android:name=".activityes.MainActivity">
+        <activity android:name=".activityes.AboutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +19,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BeckScaleActivity"
-            android:label="@string/app_name"></activity>
+            android:name=".activityes.TestActivity"
+            android:parentActivityName=".activityes.MainActivity"></activity>
+        <activity
+            android:name=".activityes.ReactionActivity"
+            android:parentActivityName=".activityes.MainActivity"></activity>
+        <activity android:name=".activityes.MainActivity">
+
+        </activity>
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
