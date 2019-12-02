@@ -6,15 +6,26 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class StoreTestsDBHelper extends SQLiteOpenHelper {
+public class DataBaseHelper extends SQLiteOpenHelper {
 
    // MyDB storeTests = new MyDB();
 
+    private static DataBaseHelper mInstance = null;
+
+    private Context mCxt;
     public static final String DB_NAME = "appDB";
     public static final int DB_VERSION = 1;
 
-    public StoreTestsDBHelper(@Nullable Context context) {
+    public static DataBaseHelper getInstance(Context ctx) {
+        if (mInstance == null) {
+            mInstance = new DataBaseHelper(ctx.getApplicationContext());
+        }
+        return mInstance;
+    }
+
+    private DataBaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        this.mCxt = context;
     }
     //private static final String LOG_TAG = "myLog";
 

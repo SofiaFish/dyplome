@@ -20,10 +20,10 @@
         </activity>
         <activity
             android:name=".activityes.TestActivity"
-            android:parentActivityName=".activityes.MainActivity"></activity>
+            android:parentActivityName=".activityes.MainActivity" />
         <activity
             android:name=".activityes.ReactionActivity"
-            android:parentActivityName=".activityes.MainActivity"></activity>
+            android:parentActivityName=".activityes.MainActivity" />
         <activity android:name=".activityes.MainActivity">
 
         </activity>

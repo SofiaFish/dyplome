@@ -1,65 +1,52 @@
 package com.example.dyplome.activityes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
-import android.widget.TextView;
+import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dyplome.R;
+import com.example.dyplome.db.DataBaseHelper;
+import com.example.dyplome.db.DbCreator;
+import com.example.dyplome.model.User;
 
 public class AboutActivity extends AppCompatActivity {
 
-    TextView tvAge;
-    TextView tvWeight;
     NumberPicker nbpickWeight;
     NumberPicker nbpickAge;
-
-
+    Button btnSave;
+    DbCreator creator;
+    RadioButton female;
+    RadioButton male;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        btnSave = findViewById(R.id.btnSave);
+        male = findViewById(R.id.male);
+        female = findViewById(R.id.female);
 
-        tvAge = findViewById(R.id.age);
-        tvWeight = findViewById(R.id.weight);
+        nbpickAge = findViewById(R.id.nbpicker);
+        nbpickAge.setMinValue(14);
+        nbpickAge.setMaxValue(50);
 
+        nbpickWeight = findViewById(R.id.nbpickerweight);
+        nbpickWeight.setMinValue(14);
+        nbpickWeight.setMaxValue(50);
 
-        tvAge.setOnClickListener(new View.OnClickListener() {
+        creator = new DbCreator(DataBaseHelper.getInstance(this).getWritableDatabase());
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nbpickAge = findViewById(R.id.nbpicker);
-                nbpickAge.setMinValue(14);
-                nbpickAge.setMaxValue(50);
+                creator.addUser(new User(nbpickWeight.getValue(), male.isChecked() ? "Male" : "Female", nbpickWeight.getValue()));
+                Intent intent = new Intent(AboutActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
-
-        tvWeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nbpickWeight = findViewById(R.id.nbpickerweight);
-                nbpickWeight.setMinValue(14);
-                nbpickWeight.setMaxValue(50);
-            }
-        });
-
-//        nbpickAge.setFormatter(new NumberPicker.Formatter() {
-//            @Override
-//            public String format(int value) {
-//                return String.format("%0.2d", value);
-//            }
-//        });
-
-        NumberPicker.OnValueChangeListener onValueChangeListener= new NumberPicker.OnValueChangeListener(){
-
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                String value = picker.getValue()+"";
-                tvAge.setText(value);
-            }
-        };
-
     }
-
 }

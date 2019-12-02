@@ -54,19 +54,11 @@ public class MyDB {
 
     //about tables
 
-    public static class Gender implements BaseColumns {
-        public static final String ID = "gender_id";
-        public static final String TABLE_NAME = "gender";
+    public static class User implements BaseColumns {
+        public static final String TABLE_NAME = "user";
+        public static final String ID = "id";
         public static final String GENDER = "gender";
-    }
-    public static class Age implements BaseColumns {
-        public static final String ID = "age_id";
-        public static final String TABLE_NAME = "age";
         public static final String AGE = "age";
-    }
-    public static class Weight implements BaseColumns {
-        public static final String ID = "weight_id";
-        public static final String TABLE_NAME = "weight";
         public static final String WEIGHT = "weight";
     }
 
@@ -100,21 +92,12 @@ public class MyDB {
 
     //about tables
 
-    public static final String SQL_CREATE_GENDER =
-            "CREATE TABLE " + Gender.TABLE_NAME + " (" +
-                    Gender.ID + " INTEGER PRIMARY KEY," +
-                    Gender.GENDER + " TEXT)";
-
-    public static final String SQL_CREATE_AGE =
-            "CREATE TABLE " + Age.TABLE_NAME + " (" +
-                    Age.ID + " INTEGER PRIMARY KEY," +
-                    Age.AGE + " INTEGER)";
-
-    public static final String SQL_WEIGHT =
-            "CREATE TABLE " + Weight.TABLE_NAME + " (" +
-                    Weight.ID + " INTEGER PRIMARY KEY," +
-                    Weight.WEIGHT + " FLOAT)";
-
+    public static final String SQL_CREATE_USER =
+            "CREATE TABLE " + User.TABLE_NAME + " (" +
+                    User.ID + " INTEGER PRIMARY KEY, " +
+                    User.GENDER + " TEXT " +
+                    User.AGE + " INTEGER " +
+                    User.WEIGHT + " FLOAT)";
 
     //inner tables
 

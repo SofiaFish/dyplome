@@ -3,13 +3,11 @@ package com.example.dyplome.db;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.dyplome.model.Age;
 import com.example.dyplome.model.Answer;
-import com.example.dyplome.model.Gender;
 import com.example.dyplome.model.Question;
 import com.example.dyplome.model.Score;
 import com.example.dyplome.model.Test;
-import com.example.dyplome.model.Weight;
+import com.example.dyplome.model.User;
 
 public class DbCreator {
 
@@ -25,8 +23,6 @@ public class DbCreator {
 
         // Add tests
         addTest(new Test(0, "Шкала Бека"));
-
-
         //Beck scale  Questions
         addQuestion(new Question(0, 0, "Чувствуете ли вы себя расстртоенным?"));
         addQuestion(new Question(1, 0, "Чувствуете ли вы тревогу за будущее?"));
@@ -333,19 +329,11 @@ public class DbCreator {
         db.close();
     }
 
-    public void addGender(Gender gender){
-        values.put(MyDB.Gender.ID, gender.getId());
-        values.put(MyDB.Gender.GENDER, gender.getGender());
+    public void addUser(User user) {
+        values.put(MyDB.User.ID, user.getId());
+        values.put(MyDB.User.GENDER, user.getGender());
+        values.put(MyDB.User.AGE, user.getAge());
+        values.put(MyDB.User.WEIGHT, user.getWeight());
     }
-
-    public void addAge(Age age){
-        values.put(MyDB.Age.ID, age.getId());
-        values.put(MyDB.Age.AGE, age.getAge());
-    }
-    public void addWeight(Weight weight){
-        values.put(MyDB.Weight.ID, weight.getId());
-        values.put(MyDB.Weight.WEIGHT, weight.getWeight());
-    }
-
 
 }

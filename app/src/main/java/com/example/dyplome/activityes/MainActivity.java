@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ArrayList<String> list_test = new ArrayList<>();
         list_test.add("Шкала Бека");
         list_test.add("Шкала Гамильтона");
