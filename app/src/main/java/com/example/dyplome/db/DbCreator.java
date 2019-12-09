@@ -13,11 +13,11 @@ import com.example.dyplome.model.TestModel;
 import com.example.dyplome.model.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DbCreator {
 
     SQLiteDatabase db;
+    ContentValues values;
 
     public DbCreator(SQLiteDatabase db) {
         this.db = db;
@@ -218,13 +218,7 @@ public class DbCreator {
         addQuestion(new Question(12, 1, "Общие соматические симптомы\n" + "\n"));
         addQuestion(new Question(13, 1, "Ипохондрия\n" + "\n"));
         addQuestion(new Question(14, 1, "Снижение массы тела\n" + "\n"));
-
         addQuestion(new Question(15, 1, "Критичность\n" + "\n"));
-
-
-
-
-
 
         addAnswer(new Answer(0, 0, "0 = отсутствуют", 0));
         addAnswer(new Answer(1, 0, " 1 = мрачность, пессимизм, безнадежность", 1));
@@ -310,9 +304,10 @@ public class DbCreator {
 
     }
 
-    ContentValues values = new ContentValues();
+
 
     public void addTest(Test test){
+        values = new ContentValues();
         values.put(MyDB.Test.ID, test.getId());
         values.put(MyDB.Test.NAME, test.getName());
 
@@ -321,6 +316,7 @@ public class DbCreator {
     }
 
     public void addQuestion(Question question){
+        values = new ContentValues();
         values.put(MyDB.Question.ID, question.getId());
         values.put(MyDB.Question.ID_TEST, question.getId_test());
         values.put(MyDB.Question.QUESTION, question.getQuestion());
@@ -330,16 +326,20 @@ public class DbCreator {
     }
 
     public void addAnswer(Answer answer){
+        values = new ContentValues();
         values.put(MyDB.Answer.ID, answer.getId());
         values.put(MyDB.Answer.ID_QUESTION, answer.getId_question());
         values.put(MyDB.Answer.ANSWER, answer.getText());
         values.put(MyDB.Answer.SCORE, answer.getScore());
+
+        db.insert(MyDB.Answer.TABLE_NAME,null, values);
 
        // long newRowId = db.insert(MyDB.Answer.TABLE_NAME, null, values);
 //        db.close();
     }
 
     public void addScore(Score score){
+        values = new ContentValues();
         values.put(MyDB.Score.ID, score.getId());
         values.put(MyDB.Score.ID_TEST, score.getId_test());
 
@@ -348,24 +348,45 @@ public class DbCreator {
     }
 
     public void addUser(User user) {
+        values = new ContentValues();
         values.put(MyDB.User.ID, user.getId());
         values.put(MyDB.User.GENDER, user.getGender());
         values.put(MyDB.User.AGE, user.getAge());
         values.put(MyDB.User.WEIGHT, user.getWeight());
+
+        db.insert(MyDB.User.TABLE_NAME,null,values);
     }
 
-    public List<TestModel> getTests(String type) {
+    public ArrayList<TestModel> getTests(String type) {
 
-        Cursor cursor = db.rawQuery("select " + MyDB.Question.TABLE_NAME + "."+MyDB.Question.QUESTION+ ", " +
-                MyDB.Answer.TABLE_NAME + "."+MyDB.Answer.ANSWER + " from " + MyDB.Question.TABLE_NAME +
-                " INNER JOIN " + MyDB.Answer.TABLE_NAME + " ON " + MyDB.Question.TABLE_NAME + "." + MyDB.Question.ID + " = " + MyDB.Answer.TABLE_NAME +
-                "."+MyDB.Answer.ID_QUESTION, null);
+        ArrayList<TestModel> list = new ArrayList<>();
+
+
+        Cursor cursor = db.rawQuery("select  * from " + MyDB.Question.TABLE_NAME, null);
+//
         if (cursor.moveToNext()){
             do {
+                list.add(new TestModel(cursor.getString(cursor.getColumnIndex(MyDB.Question.QUESTION)),
+                        getAnswersByQuestrion(cursor.getInt(cursor.getColumnIndex(MyDB.Question.ID)))));
                 Log.d("getTests: ",cursor.getCount() + "");
             } while (cursor.moveToNext());
         }
-        return new ArrayList<TestModel>();
+        return list;
+    }
+
+    public ArrayList<String> getAnswersByQuestrion(int questionId){
+
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select " + MyDB.Answer.ANSWER + " from " + MyDB.Answer.TABLE_NAME + " where " + MyDB.Answer.ID_QUESTION +
+                " = " + questionId, null);
+
+        if (cursor.moveToNext()){
+            do {
+                list.add(cursor.getString(cursor.getColumnIndex(MyDB.Answer.ANSWER)));
+            } while (cursor.moveToNext());
+        }
+
+        return list;
     }
 
 }

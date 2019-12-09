@@ -1,13 +1,13 @@
 package com.example.dyplome.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class TestModel {
 
     private String question;
-    private List<String> answers;
+    private ArrayList<String> answers;
 
-    public TestModel(String question, List<String> answers) {
+    public TestModel(String question, ArrayList<String> answers) {
         this.question = question;
         this.answers = answers;
     }
@@ -20,11 +20,11 @@ public class TestModel {
         this.question = question;
     }
 
-    public List<String> getAnswers() {
+    public ArrayList<String> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<String> answers) {
+    public void setAnswers(ArrayList<String> answers) {
         this.answers = answers;
     }
 }
