@@ -31,7 +31,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        DbCreator creator = new DbCreator(getWritableDatabase());
+
+
+        DbCreator creator = new DbCreator(db);
+        creator.addTables();
         creator.createBeck();
         creator.createHamilton();
     }

@@ -1,13 +1,19 @@
 package com.example.dyplome.db;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.dyplome.model.Answer;
 import com.example.dyplome.model.Question;
 import com.example.dyplome.model.Score;
 import com.example.dyplome.model.Test;
+import com.example.dyplome.model.TestModel;
 import com.example.dyplome.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbCreator {
 
@@ -18,6 +24,18 @@ public class DbCreator {
     }
 
     //addTest(new Test(2, "Тест на реакцию"));
+
+    public void addTables(){
+        db.execSQL(MyDB.SQL_CREATE_TEST);
+        db.execSQL(MyDB.SQL_CREATE_QUESTION);
+        db.execSQL(MyDB.SQL_CREATE_ANSWER);
+        db.execSQL(MyDB.SQL_CREATE_SCORE);
+        db.execSQL(MyDB.SQL_CREATE_QUESTION_ANSWER);
+        db.execSQL(MyDB.SQL_CREATE_SCORE_TEST);
+        db.execSQL(MyDB.SQL_CREATE_TEST_QUESTION);
+        db.execSQL(MyDB.SQL_CREATE_USER);
+
+    }
 
     public void createBeck(){
 
@@ -299,7 +317,7 @@ public class DbCreator {
         values.put(MyDB.Test.NAME, test.getName());
 
         db.insert(MyDB.Test.TABLE_NAME, null, values);
-        db.close();
+//        db.close();
     }
 
     public void addQuestion(Question question){
@@ -308,7 +326,7 @@ public class DbCreator {
         values.put(MyDB.Question.QUESTION, question.getQuestion());
 
         db.insert(MyDB.Question.TABLE_NAME, null, values);
-        db.close();
+        //db.close();
     }
 
     public void addAnswer(Answer answer){
@@ -318,7 +336,7 @@ public class DbCreator {
         values.put(MyDB.Answer.SCORE, answer.getScore());
 
        // long newRowId = db.insert(MyDB.Answer.TABLE_NAME, null, values);
-        db.close();
+//        db.close();
     }
 
     public void addScore(Score score){
@@ -326,7 +344,7 @@ public class DbCreator {
         values.put(MyDB.Score.ID_TEST, score.getId_test());
 
         db.insert(MyDB.Score.TABLE_NAME, null, values);
-        db.close();
+//        db.close();
     }
 
     public void addUser(User user) {
@@ -334,6 +352,20 @@ public class DbCreator {
         values.put(MyDB.User.GENDER, user.getGender());
         values.put(MyDB.User.AGE, user.getAge());
         values.put(MyDB.User.WEIGHT, user.getWeight());
+    }
+
+    public List<TestModel> getTests(String type) {
+
+        Cursor cursor = db.rawQuery("select " + MyDB.Question.TABLE_NAME + "."+MyDB.Question.QUESTION+ ", " +
+                MyDB.Answer.TABLE_NAME + "."+MyDB.Answer.ANSWER + " from " + MyDB.Question.TABLE_NAME +
+                " INNER JOIN " + MyDB.Answer.TABLE_NAME + " ON " + MyDB.Question.TABLE_NAME + "." + MyDB.Question.ID + " = " + MyDB.Answer.TABLE_NAME +
+                "."+MyDB.Answer.ID_QUESTION, null);
+        if (cursor.moveToNext()){
+            do {
+                Log.d("getTests: ",cursor.getCount() + "");
+            } while (cursor.moveToNext());
+        }
+        return new ArrayList<TestModel>();
     }
 
 }

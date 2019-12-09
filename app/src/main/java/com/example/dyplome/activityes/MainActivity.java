@@ -42,12 +42,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
 //                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, TestActivity.class);
+
                 switch (position){
                     case 0:
+                        intent.putExtra("test", "Beck");
                         startActivity(intent);
                         break;
                     case 1:
+                        intent.putExtra("test", "Hamilton");
                         startActivity(intent);
+
                         break;
                     case 2:
                         Intent intnt = new Intent(MainActivity.this, ReactionActivity.class);
@@ -55,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
             }
+
+
 
 
             @Override
