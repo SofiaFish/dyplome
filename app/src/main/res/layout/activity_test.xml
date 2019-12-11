@@ -36,9 +36,16 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/anw3"
+            android:id="@+id/ans3"
             android:text="text"/>
 
     </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_next"
+        android:text="Next"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
