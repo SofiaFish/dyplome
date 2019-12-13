@@ -26,6 +26,7 @@ public class MyDB {
     public static class Answer implements BaseColumns {
         public static final String ID = "id";
         public static final String TABLE_NAME = "answer";
+        public static final String ID_TEST = "id_test";
         public static final String ID_QUESTION = "id_question";
         public static final String ANSWER = "answer";
         public static final String SCORE = "score";
@@ -67,7 +68,7 @@ public class MyDB {
 
     public static final String SQL_CREATE_TEST =
             "CREATE TABLE " + Test.TABLE_NAME + " (" +
-                    Test.ID + " INTEGER PRIMARY KEY, " +
+                    Test.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Test.NAME + " TEXT)";
 
     public static final String SQL_CREATE_SCORE=
@@ -83,7 +84,8 @@ public class MyDB {
 
     public static final String SQL_CREATE_ANSWER =
             "CREATE TABLE " + Answer.TABLE_NAME + " (" +
-                    Answer.ID + " INTEGER PRIMARY KEY, " +
+                    Answer.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Answer.ID_TEST + " INTEGER, " +
                     Answer.ID_QUESTION + " INTEGER, " +
                     Answer.ANSWER + " TEXT, " +
                     Answer.SCORE + " INTEGER)";
@@ -120,14 +122,5 @@ public class MyDB {
             "FOREIGN KEY(" + ScoreTest.SCORE_ID+") REFERENCES " + Score.TABLE_NAME + "(" + Score.ID + "),"+
             "FOREIGN KEY(" + ScoreTest.TEST_ID+ ") REFERENCES " + Test.TABLE_NAME + "(" + Test.ID+ "))";
 
-
-//    public static final String SQL_CREATE_SCORE_TEST =
-//            "CREATE TABLE " + ScoreTest.TABLE_NAME + " (" +
-//                    ScoreTest.SCORE_ID + " INTEGER," +
-//                    "FOREIGN KEY (" + ScoreTest.TEST_ID + ") REFERENCES " +
-//                    Test.TABLE_NAME + "(" + Test.ID + ")" +
-//                    ScoreTest.SCORE_ID + " INTEGER," +
-//                    "FOREIGN KEY (" + ScoreTest.SCORE_ID + ") REFERENCES " +
-//                    Score.TABLE_NAME + "(" + Score.ID + ")";
 
 }

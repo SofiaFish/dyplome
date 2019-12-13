@@ -30,6 +30,7 @@ public class TestActivity extends AppCompatActivity {
 
     int score;
     int position = 0;
+    int id_test = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +48,10 @@ public class TestActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final String test = getIntent().getStringExtra("test");
+        final int test = getIntent().getIntExtra("test", -1);
 
         DbCreator creator = new DbCreator(DataBaseHelper.getInstance(this).getWritableDatabase());
-        tests = creator.getTests("dsfsdf");
+        tests = creator.getTests(test);
 
         next.setOnClickListener(new View.OnClickListener() {
             Intent intent = new Intent(TestActivity.this, ResultActivity.class);
@@ -60,25 +61,19 @@ public class TestActivity extends AppCompatActivity {
 
                 int id = answers.getCheckedRadioButtonId();
                 View radioBtn = answers.findViewById(id);
-                score+=answers.indexOfChild(radioBtn);
+                score += answers.indexOfChild(radioBtn);
 
                 if(position < tests.size()-1)
                     InitTest(tests, ++position);
                 else
                     startActivity(intent);
 
+
+
             }
         });
-
-
-
-        switch (test){
-            case "Beck":
+               // position = 0;
                 InitTest(tests, position);
-                break;
-            case "Hamilton":
-                break;
-        }
     }
 
     public void InitTest(ArrayList<TestModel> arrayList, int position){

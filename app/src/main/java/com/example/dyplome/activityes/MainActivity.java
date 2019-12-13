@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (position){
                     case 0:
-                        intent.putExtra("test", "Beck");
+                        intent.putExtra("test", 0);
                         startActivity(intent);
                         break;
                     case 1:
-                        intent.putExtra("test", "Hamilton");
+                        intent.putExtra("test", 1);
                         startActivity(intent);
 
                         break;
