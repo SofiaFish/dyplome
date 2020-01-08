@@ -24,6 +24,7 @@ public class TestActivity extends AppCompatActivity {
     RadioButton answer2;
     RadioButton answer3;
     RadioButton answer4;
+    RadioButton answer5;
     RadioGroup answers;
     Button next;
     ArrayList<TestModel> tests;
@@ -42,6 +43,7 @@ public class TestActivity extends AppCompatActivity {
         answer2 = findViewById(R.id.ans1);
         answer3 = findViewById(R.id.ans2);
         answer4 = findViewById(R.id.ans3);
+        answer5 = findViewById(R.id.ans4);
         next = findViewById(R.id.btn_next);
         answers = findViewById(R.id.answers);
 
@@ -63,11 +65,11 @@ public class TestActivity extends AppCompatActivity {
                 View radioBtn = answers.findViewById(id);
                 score += answers.indexOfChild(radioBtn);
 
-                if(position < tests.size()-1)
-                    InitTest(tests, ++position);
+                if (position < tests.size()) {
+                    InitTest(tests, position++);
+                }
                 else
                     startActivity(intent);
-
 
 
             }
@@ -83,7 +85,12 @@ public class TestActivity extends AppCompatActivity {
         answer2.setText(testModel.getAnswers().get(1));
         answer3.setText(testModel.getAnswers().get(2));
         answer4.setText(testModel.getAnswers().get(3));
+        answer5.setText(testModel.getAnswers().get(4));
 
+        if (arrayList.size() > 4)
+            answer5.setVisibility(View.VISIBLE);
+        if (arrayList.size() < 4)
+            answer4.setVisibility(View.GONE);
 
     }
 }

@@ -28,7 +28,7 @@ public class MyDB {
         public static final String TABLE_NAME = "answer";
         public static final String ID_TEST = "id_test";
         public static final String ID_QUESTION = "id_question";
-        public static final String ANSWER = "answer";
+        public static final String ANSWER = "answer_text";
         public static final String SCORE = "score";
     }
 
@@ -78,7 +78,7 @@ public class MyDB {
 
     public static final String SQL_CREATE_QUESTION =
             "CREATE TABLE " + Question.TABLE_NAME + " (" +
-                    Question.ID + " INTEGER PRIMARY KEY, " +
+                    Question.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Question.ID_TEST + " INTEGER, " +
                     Question.QUESTION + " TEXT)";
 
