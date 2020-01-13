@@ -84,13 +84,21 @@ public class TestActivity extends AppCompatActivity {
         answer1.setText(testModel.getAnswers().get(0));
         answer2.setText(testModel.getAnswers().get(1));
         answer3.setText(testModel.getAnswers().get(2));
-        answer4.setText(testModel.getAnswers().get(3));
-        answer5.setText(testModel.getAnswers().get(4));
 
-        if (arrayList.size() > 4)
+        if (testModel.getAnswers().size() == 5) {
             answer5.setVisibility(View.VISIBLE);
-        if (arrayList.size() < 4)
+            answer5.setText(testModel.getAnswers().get(4));
+        }
+        else if(testModel.getAnswers().size() == 3) {
+            answer5.setVisibility(View.GONE);
             answer4.setVisibility(View.GONE);
+        }
+        else{
+            answer4.setVisibility(View.VISIBLE);
+            answer4.setText(testModel.getAnswers().get(3));
+            answer5.setVisibility(View.GONE);
+        }
+
 
     }
 }

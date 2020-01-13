@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ans3"
-            android:text="text"/>
+            android:text="text"
+            android:visibility="gone"/>
 
         <RadioButton
             android:layout_width="wrap_content"
