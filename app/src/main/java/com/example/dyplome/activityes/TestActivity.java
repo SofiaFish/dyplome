@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,7 +32,7 @@ public class TestActivity extends AppCompatActivity {
     ArrayList<TestModel> tests;
 
     int score;
-    int position = 0;
+    int position = 1;
     int testId;
 
     @Override
@@ -70,22 +71,28 @@ public class TestActivity extends AppCompatActivity {
 
                 int id = answers.getCheckedRadioButtonId();
                 View radioBtn = answers.findViewById(id);
-                score += answers.indexOfChild(radioBtn);
 
-                if (position < tests.size()) {
-                    InitTest(tests, position++);
+                if (answers.indexOfChild(radioBtn) != -1) {
+                    score += answers.indexOfChild(radioBtn);
+
+                    if (position < tests.size()) {
+                        InitTest(tests, position++);
+                    } else {
+                        creator.addScore(new Score(testId, score));
+                        intent.putExtra("score", score);
+                        //FIXME
+                        intent.putExtra("maxScore", finalMaxScore);
+                        startActivity(intent);
+                    }
                 } else {
-                    creator.addScore(new Score(testId, score));
-                    intent.putExtra("score", score);
-                    //FIXME
-                    intent.putExtra("maxScore", finalMaxScore);
-                    startActivity(intent);
+                    Toast.makeText(TestActivity.this, "Choose answer first!", Toast.LENGTH_SHORT).show();
                 }
+
 
 
             }
         });
-        InitTest(tests, position);
+        InitTest(tests, 0);
     }
 
     public void InitTest(ArrayList<TestModel> arrayList, int position) {
