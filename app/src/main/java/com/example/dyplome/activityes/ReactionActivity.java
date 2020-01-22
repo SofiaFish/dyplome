@@ -52,7 +52,6 @@ public class ReactionActivity extends AppCompatActivity {
         });
 
 
-
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +59,7 @@ public class ReactionActivity extends AppCompatActivity {
                 Drawable background = layout.getBackground();
                 if (background instanceof ColorDrawable)
                     color = ((ColorDrawable) background).getColor();
-                if(color == Color.RED){
+                if (color == Color.RED) {
                     long measure = System.currentTimeMillis() - start;
                     AlertDialog.Builder builder = new AlertDialog.Builder(ReactionActivity.this);
                     builder.setMessage(measure + "ms");
@@ -78,10 +77,10 @@ public class ReactionActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(ReactionActivity.this, "РАНО БЛЯТЬ", Toast.LENGTH_SHORT).show();
                 }
-                
+
                 counter++;
                 Intent intent = new Intent(ReactionActivity.this, ResultActivity.class);
-                if(counter == 5)
+                if (counter == 5)
                     startActivity(intent);
             }
         });

@@ -13,6 +13,7 @@ public class MyDB {
     public static class Score implements BaseColumns {
         public static final String ID = "id";
         public static final String ID_TEST = "id_test";
+        public static final String SCORE = "score";
         public static final String TABLE_NAME = "score";
     }
 
@@ -71,7 +72,7 @@ public class MyDB {
                     Test.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Test.NAME + " TEXT)";
 
-    public static final String SQL_CREATE_SCORE=
+    public static final String SQL_CREATE_SCORE =
             "CREATE TABLE " + Score.TABLE_NAME + " (" +
                     Score.ID + " INTEGER PRIMARY KEY, " +
                     Score.ID_TEST + " INTEGER)";
@@ -105,22 +106,22 @@ public class MyDB {
             "CREATE TABLE " + TestQuestion.TABLE_NAME + " (" +
                     TestQuestion.TEST_ID + " INTEGER, " +
                     TestQuestion.QUESTION_ID + " INTEGER, " +
-                    "FOREIGN KEY(" + TestQuestion.TEST_ID+") REFERENCES " + Test.TABLE_NAME + "(" + Test.ID + ")," +
-                    "FOREIGN KEY(" + TestQuestion.QUESTION_ID+ ") REFERENCES " + Question.TABLE_NAME + "(" + Question.ID+ "))";
+                    "FOREIGN KEY(" + TestQuestion.TEST_ID + ") REFERENCES " + Test.TABLE_NAME + "(" + Test.ID + ")," +
+                    "FOREIGN KEY(" + TestQuestion.QUESTION_ID + ") REFERENCES " + Question.TABLE_NAME + "(" + Question.ID + "))";
 
     public static final String SQL_CREATE_QUESTION_ANSWER =
             "CREATE TABLE " + QuestionAnswer.TABLE_NAME + " (" +
                     QuestionAnswer.QUESTION_ID + " INTEGER, " +
-                    QuestionAnswer.ANSWER_ID + " INTEGER, "+
-            "FOREIGN KEY(" + QuestionAnswer.QUESTION_ID+") REFERENCES " + Answer.TABLE_NAME + "(" + Answer.ID + "),"+
-            "FOREIGN KEY(" + QuestionAnswer.ANSWER_ID+ ") REFERENCES " + Question.TABLE_NAME + "(" + Question.ID+ "))";
+                    QuestionAnswer.ANSWER_ID + " INTEGER, " +
+                    "FOREIGN KEY(" + QuestionAnswer.QUESTION_ID + ") REFERENCES " + Answer.TABLE_NAME + "(" + Answer.ID + ")," +
+                    "FOREIGN KEY(" + QuestionAnswer.ANSWER_ID + ") REFERENCES " + Question.TABLE_NAME + "(" + Question.ID + "))";
 
     public static final String SQL_CREATE_SCORE_TEST =
             "CREATE TABLE " + ScoreTest.TABLE_NAME + " (" +
                     ScoreTest.SCORE_ID + " INTEGER, " +
-                    ScoreTest.TEST_ID + " INTEGER, "+
-            "FOREIGN KEY(" + ScoreTest.SCORE_ID+") REFERENCES " + Score.TABLE_NAME + "(" + Score.ID + "),"+
-            "FOREIGN KEY(" + ScoreTest.TEST_ID+ ") REFERENCES " + Test.TABLE_NAME + "(" + Test.ID+ "))";
+                    ScoreTest.TEST_ID + " INTEGER, " +
+                    "FOREIGN KEY(" + ScoreTest.SCORE_ID + ") REFERENCES " + Score.TABLE_NAME + "(" + Score.ID + ")," +
+                    "FOREIGN KEY(" + ScoreTest.TEST_ID + ") REFERENCES " + Test.TABLE_NAME + "(" + Test.ID + "))";
 
 
 }

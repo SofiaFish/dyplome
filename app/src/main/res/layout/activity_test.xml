@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/question"
-        android:text="text"/>
+        android:text="text" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -21,23 +21,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ans0"
-            android:text="text"/>
+            android:text="text" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ans1"
-            android:text="text"/>
+            android:text="text" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ans2"
-            android:text="text"/>
+            android:text="text" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ans3"
             android:text="text"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -54,6 +57,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_next"
         android:text="Next"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
 </LinearLayout>

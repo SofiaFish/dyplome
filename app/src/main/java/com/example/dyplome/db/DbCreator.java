@@ -25,7 +25,7 @@ public class DbCreator {
 
     //addTest(new Test(2, "Тест на реакцию"));
 
-    public void addTables(){
+    public void addTables() {
         db.execSQL(MyDB.SQL_CREATE_TEST);
         db.execSQL(MyDB.SQL_CREATE_QUESTION);
         db.execSQL(MyDB.SQL_CREATE_ANSWER);
@@ -37,38 +37,38 @@ public class DbCreator {
 
     }
 
-    public void createBeck(){
+    public void createBeck() {
 
         // Add tests
         addTest(new Test(0, "Шкала Бека"));
         //Beck scale  Questions
-        addQuestion(new Question( 0, "Чувствуете ли вы себя расстртоенным?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы тревогу за будущее?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы себя неудачником?"));
+        addQuestion(new Question(0, "Чувствуете ли вы себя расстртоенным?"));
+        addQuestion(new Question(0, "Чувствуете ли вы тревогу за будущее?"));
+        addQuestion(new Question(0, "Чувствуете ли вы себя неудачником?"));
 
-        addQuestion(new Question( 0, "Чувствуете ли вы удовлетыорение от жизни?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы себя виноватым в чем-то?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы, что можете быть наказанным?"));
+        addQuestion(new Question(0, "Чувствуете ли вы удовлетыорение от жизни?"));
+        addQuestion(new Question(0, "Чувствуете ли вы себя виноватым в чем-то?"));
+        addQuestion(new Question(0, "Чувствуете ли вы, что можете быть наказанным?"));
 
-        addQuestion(new Question( 0, "Разочароались ли вы в себе?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы себя хуже других?"));
-        addQuestion(new Question( 0, "Думали ли вы покончить с собой?"));
+        addQuestion(new Question(0, "Разочароались ли вы в себе?"));
+        addQuestion(new Question(0, "Чувствуете ли вы себя хуже других?"));
+        addQuestion(new Question(0, "Думали ли вы покончить с собой?"));
 
-        addQuestion(new Question( 0, "Часто ли вы плачете?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы раздражение?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы интерес к людям?"));
+        addQuestion(new Question(0, "Часто ли вы плачете?"));
+        addQuestion(new Question(0, "Чувствуете ли вы раздражение?"));
+        addQuestion(new Question(0, "Чувствуете ли вы интерес к людям?"));
 
-        addQuestion(new Question( 0, "Откладываете ли вы принятие решений?"));
-        addQuestion(new Question( 0, "Чувствуете ли вы, что выглядите хуже обычного?"));
-        addQuestion(new Question( 0, "Можете ли вы работать так же, как и раньше?"));
+        addQuestion(new Question(0, "Откладываете ли вы принятие решений?"));
+        addQuestion(new Question(0, "Чувствуете ли вы, что выглядите хуже обычного?"));
+        addQuestion(new Question(0, "Можете ли вы работать так же, как и раньше?"));
 
-        addQuestion(new Question( 0, "Вы спите так же хорошо, как и раньше?"));
-        addQuestion(new Question( 0, "Вы устаете так же, как обычно?"));
-        addQuestion(new Question( 0, "Ваш аппетит такой же, как и раньше?"));
+        addQuestion(new Question(0, "Вы спите так же хорошо, как и раньше?"));
+        addQuestion(new Question(0, "Вы устаете так же, как обычно?"));
+        addQuestion(new Question(0, "Ваш аппетит такой же, как и раньше?"));
 
-        addQuestion(new Question( 0, "Похудели ли вы в последнее время?"));
-        addQuestion(new Question( 0, "Беспокоитесь ли вы о своем здоровье?"));
-        addQuestion(new Question( 0, "Изменилось ли ваше сексуальное желание?"));
+        addQuestion(new Question(0, "Похудели ли вы в последнее время?"));
+        addQuestion(new Question(0, "Беспокоитесь ли вы о своем здоровье?"));
+        addQuestion(new Question(0, "Изменилось ли ваше сексуальное желание?"));
 
         //Answers
 
@@ -180,32 +180,32 @@ public class DbCreator {
 
     }
 
-    public void createHamilton(){
+    public void createHamilton() {
         addTest(new Test(1, "Шкала Гамильтона"));
 
         //Add Questions
-        addQuestion(new Question( 1, "Депрессивное настроение\n" + "\n" +
+        addQuestion(new Question(1, "Депрессивное настроение\n" + "\n" +
                 "Подавленность, безнадежность, беспомощность, ненужность" + "\n"));
-        addQuestion(new Question(1,  "Чувство вины\n" + "\n"));
-        addQuestion(new Question(1,  "Суицидальные намерения\n" + "\n"));
+        addQuestion(new Question(1, "Чувство вины\n" + "\n"));
+        addQuestion(new Question(1, "Суицидальные намерения\n" + "\n"));
 
-        addQuestion(new Question(1,  "Ранняя бессонница (трудности при засыпании)\n" + "\n"));
-        addQuestion(new Question(1,  "Средняя бессонница (бессонница)\n" + "\n"));
-        addQuestion(new Question(1,  "Поздняя бессонница (ранние пробуждения)\n" + "\n"));
+        addQuestion(new Question(1, "Ранняя бессонница (трудности при засыпании)\n" + "\n"));
+        addQuestion(new Question(1, "Средняя бессонница (бессонница)\n" + "\n"));
+        addQuestion(new Question(1, "Поздняя бессонница (ранние пробуждения)\n" + "\n"));
 
-        addQuestion(new Question(1,  "Работоспособность и деятельность\n" + "\n"));
-        addQuestion(new Question(1,  "Заторможенность\n" + "\n" +
+        addQuestion(new Question(1, "Работоспособность и деятельность\n" + "\n"));
+        addQuestion(new Question(1, "Заторможенность\n" + "\n" +
                 " Замедленность мышления и речи; нарушение способности к концентрации; снижение двигательной активности" + "\n"));
-        addQuestion(new Question(1,  "Ажитация (возбуждение)\n" + "\n"));
+        addQuestion(new Question(1, "Ажитация (возбуждение)\n" + "\n"));
 
-        addQuestion(new Question(1,  "Психическая тревога\n" + "\n" + " Проявления: \n" +
+        addQuestion(new Question(1, "Психическая тревога\n" + "\n" + " Проявления: \n" +
                 "\n" + " Субъективное напряжение и раздражительность, снижение концентрации\n" +
                 "\n" + " Беспокойство по незначительному поводу\n" +
                 "\n" + " Страхи \n" +
                 "\n" + " Боится высказываться, пока не спросили\n" +
                 "\n" + " Чувство паники\n" +
                 "\n" + " Чувство нервозности "));
-        addQuestion(new Question(1,  "Соматическая тревога \n" +
+        addQuestion(new Question(1, "Соматическая тревога \n" +
                 "\n" + "Физиологические проявления тревоги: \n" +
                 "\n" + "Желудочно-кишечные: сухость во рту, метеоризм, диспепсия, диарея, спазмы, отрыжка\n" +
                 "\n" + "Сердечно-сосудистые: сердцебиение, головные боли\n" +
@@ -214,11 +214,11 @@ public class DbCreator {
                 "\n" + "Потливость\n" +
                 "\n" + "Головокружение, диплопия\n" +
                 "\n" + "Шум в ушах" + "\n"));
-        addQuestion(new Question(1,  " Желудочно-кишечные соматические симптомы\n" + "\n"));
-        addQuestion(new Question(1,  "Общие соматические симптомы\n" + "\n"));
-        addQuestion(new Question(1,  "Ипохондрия\n" + "\n"));
-        addQuestion(new Question(1,  "Снижение массы тела\n" + "\n"));
-        addQuestion(new Question(1,  "Критичность\n" + "\n"));
+        addQuestion(new Question(1, " Желудочно-кишечные соматические симптомы\n" + "\n"));
+        addQuestion(new Question(1, "Общие соматические симптомы\n" + "\n"));
+        addQuestion(new Question(1, "Ипохондрия\n" + "\n"));
+        addQuestion(new Question(1, "Снижение массы тела\n" + "\n"));
+        addQuestion(new Question(1, "Критичность\n" + "\n"));
 
         addAnswer(new Answer(1, 22, "0 = отсутствуют", 0));
         addAnswer(new Answer(1, 22, " 1 = мрачность, пессимизм, безнадежность", 1));
@@ -304,9 +304,7 @@ public class DbCreator {
 
     }
 
-
-
-    public void addTest(Test test){
+    public void addTest(Test test) {
         values = new ContentValues();
         values.put(MyDB.Test.ID, test.getId());
         values.put(MyDB.Test.NAME, test.getName());
@@ -315,7 +313,7 @@ public class DbCreator {
 //        db.close();
     }
 
-    public void addQuestion(Question question){
+    public void addQuestion(Question question) {
         values = new ContentValues();
         values.put(MyDB.Question.ID_TEST, question.getId_test());
         values.put(MyDB.Question.QUESTION, question.getQuestion());
@@ -324,23 +322,24 @@ public class DbCreator {
         //db.close();
     }
 
-    public void addAnswer(Answer answer){
+    public void addAnswer(Answer answer) {
         values = new ContentValues();
         values.put(MyDB.Answer.ID_TEST, answer.getId_test());
         values.put(MyDB.Answer.ID_QUESTION, answer.getId_question());
         values.put(MyDB.Answer.ANSWER, answer.getText());
         values.put(MyDB.Answer.SCORE, answer.getScore());
 
-        db.insert(MyDB.Answer.TABLE_NAME,null, values);
+        db.insert(MyDB.Answer.TABLE_NAME, null, values);
 
-       // long newRowId = db.insert(MyDB.Answer.TABLE_NAME, null, values);
+        // long newRowId = db.insert(MyDB.Answer.TABLE_NAME, null, values);
 //        db.close();
     }
 
-    public void addScore(Score score){
+    public void addScore(Score score) {
         values = new ContentValues();
         values.put(MyDB.Score.ID, score.getId());
         values.put(MyDB.Score.ID_TEST, score.getId_test());
+        values.put(MyDB.Score.SCORE, score.getScore());
 
         db.insert(MyDB.Score.TABLE_NAME, null, values);
 //        db.close();
@@ -353,7 +352,7 @@ public class DbCreator {
         values.put(MyDB.User.AGE, user.getAge());
         values.put(MyDB.User.WEIGHT, user.getWeight());
 
-        db.insert(MyDB.User.TABLE_NAME,null,values);
+        db.insert(MyDB.User.TABLE_NAME, null, values);
     }
 
     public ArrayList<TestModel> getTests(int testId) {
@@ -364,23 +363,23 @@ public class DbCreator {
         Cursor cursor = db.rawQuery("select  * from " + MyDB.Question.TABLE_NAME + " WHERE " +
                 MyDB.Question.ID_TEST + " = ?", new String[]{testId + ""});
 //
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 list.add(new TestModel(cursor.getString(cursor.getColumnIndex(MyDB.Question.QUESTION)),
                         getAnswersByQuestion(cursor.getInt(cursor.getColumnIndex(MyDB.Question.ID)), testId)));
-                Log.d("getTests: ",cursor.getCount() + "");
+                Log.d("getTests: ", cursor.getCount() + "");
             } while (cursor.moveToNext());
         }
         return list;
     }
 
-    public ArrayList<String> getAnswersByQuestion(int questionId, int testId){
+    public ArrayList<String> getAnswersByQuestion(int questionId, int testId) {
 
         ArrayList<String> list = new ArrayList<>();
         Cursor cursor = db.rawQuery("select " + MyDB.Answer.ANSWER + " from " + MyDB.Answer.TABLE_NAME + " where " + MyDB.Answer.ID_QUESTION +
                 " = ? AND " + MyDB.Answer.ID_TEST + " = ?", new String[]{questionId + "", testId + ""});
 
-        if (cursor.moveToNext()){
+        if (cursor.moveToNext()) {
             do {
                 list.add(cursor.getString(cursor.getColumnIndex(MyDB.Answer.ANSWER)));
             } while (cursor.moveToNext());

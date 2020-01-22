@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.dyplome.R;
 import com.example.dyplome.db.DataBaseHelper;
 import com.example.dyplome.db.DbCreator;
+import com.example.dyplome.model.Score;
 import com.example.dyplome.model.TestModel;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class TestActivity extends AppCompatActivity {
 
     int score;
     int position = 0;
-    int id_test = 0;
+    int testId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,17 @@ public class TestActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final int test = getIntent().getIntExtra("test", -1);
+        testId = getIntent().getIntExtra("testId", -1);
 
-        DbCreator creator = new DbCreator(DataBaseHelper.getInstance(this).getWritableDatabase());
-        tests = creator.getTests(test);
+        final DbCreator creator = new DbCreator(DataBaseHelper.getInstance(this).getWritableDatabase());
+        tests = creator.getTests(testId);
 
+        int maxScore = 0;
+        for (int i = 0; i < tests.size(); i++) {
+            maxScore += tests.get(i).getAnswers().size() -1;
+        }
+
+        final int finalMaxScore = maxScore;
         next.setOnClickListener(new View.OnClickListener() {
             Intent intent = new Intent(TestActivity.this, ResultActivity.class);
 
@@ -67,18 +74,21 @@ public class TestActivity extends AppCompatActivity {
 
                 if (position < tests.size()) {
                     InitTest(tests, position++);
-                }
-                else
+                } else {
+                    creator.addScore(new Score(testId, score));
+                    intent.putExtra("score", score);
+                    //FIXME
+                    intent.putExtra("maxScore", finalMaxScore);
                     startActivity(intent);
+                }
 
 
             }
         });
-               // position = 0;
-                InitTest(tests, position);
+        InitTest(tests, position);
     }
 
-    public void InitTest(ArrayList<TestModel> arrayList, int position){
+    public void InitTest(ArrayList<TestModel> arrayList, int position) {
         TestModel testModel = arrayList.get(position);
         question.setText(testModel.getQuestion());
         answer1.setText(testModel.getAnswers().get(0));
@@ -88,12 +98,10 @@ public class TestActivity extends AppCompatActivity {
         if (testModel.getAnswers().size() == 5) {
             answer5.setVisibility(View.VISIBLE);
             answer5.setText(testModel.getAnswers().get(4));
-        }
-        else if(testModel.getAnswers().size() == 3) {
+        } else if (testModel.getAnswers().size() == 3) {
             answer5.setVisibility(View.GONE);
             answer4.setVisibility(View.GONE);
-        }
-        else{
+        } else {
             answer4.setVisibility(View.VISIBLE);
             answer4.setText(testModel.getAnswers().get(3));
             answer5.setVisibility(View.GONE);

@@ -55,7 +55,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 //        }
     }
 
-    String getItem(int id){
+    String getItem(int id) {
         return mData.get(id);
     }
 

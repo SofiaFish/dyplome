@@ -3,10 +3,11 @@ package com.example.dyplome.model;
 public class Score {
     int id;
     int id_test;
+    int score;
 
-    public Score(int id, int id_test) {
-        this.id = id;
+    public Score(int id_test, int score) {
         this.id_test = id_test;
+        this.score = score;
     }
 
     public int getId() {
@@ -15,5 +16,9 @@ public class Score {
 
     public int getId_test() {
         return id_test;
+    }
+
+    public int getScore() {
+        return score;
     }
 }

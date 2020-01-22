@@ -22,6 +22,7 @@ public class AboutActivity extends AppCompatActivity {
     DbCreator creator;
     RadioButton female;
     RadioButton male;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

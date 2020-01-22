@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, TestActivity.class);
 
-                switch (position){
+                switch (position) {
                     case 0:
-                        intent.putExtra("test", 0);
+                        intent.putExtra("testId", 0);
                         startActivity(intent);
                         break;
                     case 1:
-                        intent.putExtra("test", 1);
+                        intent.putExtra("testId", 1);
                         startActivity(intent);
 
                         break;
@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
             }
-
-
 
 
             @Override
