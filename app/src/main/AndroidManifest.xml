@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activityes.ResultActivity"></activity>
+        <activity android:name=".activityes.TherapyActivity"></activity>
+        <activity android:name=".activityes.ResultActivity" />
         <activity android:name=".activityes.AboutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,7 @@
         <activity
             android:name=".activityes.ReactionActivity"
             android:parentActivityName=".activityes.MainActivity" />
-        <activity android:name=".activityes.MainActivity"></activity>
+        <activity android:name=".activityes.MainActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"

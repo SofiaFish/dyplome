@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dyplome.R;
 import com.example.dyplome.RecycleViewAdapter;
 import com.example.dyplome.RecyclerItemClickListener;
+import com.example.dyplome.model.RecyclerItem;
 
 import java.util.ArrayList;
 
@@ -26,15 +27,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ArrayList<String> list_test = new ArrayList<>();
-        list_test.add("Шкала Бека");
-        list_test.add("Шкала Гамильтона");
-        list_test.add("Тест на реакцию");
+//        ArrayList<String> list_test = new ArrayList<>();
+//        list_test.add("Шкала Бека");
+//        list_test.add("Шкала Гамильтона");
+//        list_test.add("Тест на реакцию");
+
+        ArrayList<RecyclerItem> recyclerItems = new ArrayList<>();
+        recyclerItems.add(new RecyclerItem("Шкала Бека",true));
+        recyclerItems.add(new RecyclerItem("Шкала Гамильтона",false));
+        recyclerItems.add(new RecyclerItem("Тест на реакцию",false));
 
 
         testsList = findViewById(R.id.list_tests);
         testsList.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecycleViewAdapter(list_test);
+        adapter = new RecycleViewAdapter(recyclerItems);
 //        adapter.setOnClickListener(this);
         testsList.setAdapter(adapter);
         testsList.addOnItemTouchListener(new RecyclerItemClickListener(getApplication(), testsList, new RecyclerItemClickListener.OnItemClickListener() {

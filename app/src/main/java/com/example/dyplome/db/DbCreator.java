@@ -10,9 +10,12 @@ import com.example.dyplome.model.Question;
 import com.example.dyplome.model.Score;
 import com.example.dyplome.model.Test;
 import com.example.dyplome.model.TestModel;
+import com.example.dyplome.model.Therapy;
 import com.example.dyplome.model.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DbCreator {
 
@@ -34,6 +37,7 @@ public class DbCreator {
         db.execSQL(MyDB.SQL_CREATE_SCORE_TEST);
         db.execSQL(MyDB.SQL_CREATE_TEST_QUESTION);
         db.execSQL(MyDB.SQL_CREATE_USER);
+        db.execSQL(MyDB.SQL_CREATE_THERAPY);
 
     }
 
@@ -353,6 +357,20 @@ public class DbCreator {
         values.put(MyDB.User.WEIGHT, user.getWeight());
 
         db.insert(MyDB.User.TABLE_NAME, null, values);
+    }
+
+    public String dateToString(Date date){
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        return formatter.format(date);
+    }
+
+    public void addTherapy(Therapy therapy){
+        values = new ContentValues();
+        values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
+        values.put(MyDB.Therapy.THERAPY_TASK, therapy.getTask());
+        values.put(MyDB.Therapy.THERAPY_DATE, dateToString(therapy.getDate()));
+
+        db.insert(MyDB.Therapy.TABLE_NAME, null, values);
     }
 
     public ArrayList<TestModel> getTests(int testId) {

@@ -80,7 +80,6 @@ public class TestActivity extends AppCompatActivity {
                     } else {
                         creator.addScore(new Score(testId, score));
                         intent.putExtra("score", score);
-                        //FIXME
                         intent.putExtra("maxScore", finalMaxScore);
                         startActivity(intent);
                     }

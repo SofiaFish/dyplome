@@ -3,19 +3,22 @@ package com.example.dyplome;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dyplome.model.RecyclerItem;
+
 import java.util.ArrayList;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
-    private ArrayList<String> mData;
+    private ArrayList<RecyclerItem> mData;
 //    private ItemClickListener mClickListener;
 
-    public RecycleViewAdapter(ArrayList<String> mData) {
+    public RecycleViewAdapter(ArrayList<RecyclerItem> mData) {
         this.mData = mData;
     }
 
@@ -28,8 +31,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String tests = mData.get(position);
+        String tests = mData.get(position).getTestName();
+        boolean isPassed = mData.get(position).isPassed();
         holder.myTextView.setText(tests);
+        holder.isPassed.setChecked(isPassed);
 
     }
 
@@ -42,10 +47,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView myTextView;
+        CheckBox isPassed;
 
         MyViewHolder(final View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.test1);
+            isPassed = itemView.findViewById(R.id.cb_completed);
         }
 
 //        @Override
@@ -55,9 +62,9 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 //        }
     }
 
-    String getItem(int id) {
-        return mData.get(id);
-    }
+//    String getItem(int id) {
+//        return mData.get(id);
+//    }
 
 //    void setClickListener(ItemClickListener itemClickListener) {
 //        this.mClickListener = itemClickListener;

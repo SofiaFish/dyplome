@@ -33,6 +33,14 @@ public class MyDB {
         public static final String SCORE = "score";
     }
 
+    public static  class Therapy implements  BaseColumns{
+        public static final String THERAPY_ID = "therapy_id";
+        public static final String TABLE_NAME = "therapy_name";
+        public static final String THERAPY_TASK = "therapy_task";
+        public static final String THERAPY_DATE = "therapy_date";
+
+    }
+
     //inner tables
 
     public static class TestQuestion implements BaseColumns {
@@ -52,6 +60,8 @@ public class MyDB {
         public static final String SCORE_ID = "score_id";
         public static final String TABLE_NAME = "scoreTest";
     }
+
+
 
     //about tables
 
@@ -99,6 +109,14 @@ public class MyDB {
                     User.GENDER + " TEXT, " +
                     User.AGE + " INTEGER, " +
                     User.WEIGHT + " FLOAT)";
+
+
+    //therapy table
+    public static final String SQL_CREATE_THERAPY =
+            "CREATE TABLE " + Therapy.TABLE_NAME + " (" +
+                    Therapy.THERAPY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Therapy.THERAPY_TASK + " TEXT, " +
+                    Therapy.THERAPY_DATE + " TEXT)";
 
     //inner tables
 
