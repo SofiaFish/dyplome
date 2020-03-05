@@ -322,13 +322,21 @@ public class DbCreator {
         addTherapy(new Therapy(4,"Заняться своим хобби", ""));
     }
 
+    public void createTherapy(){
+        addTherapy(new Therapy(0,"Уход за собой", ""));
+        addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
+        addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
+        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
+        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
+    }
+
     public void addTest(Test test) {
         values = new ContentValues();
         values.put(MyDB.Test.ID, test.getId());
         values.put(MyDB.Test.NAME, test.getName());
 
         db.insert(MyDB.Test.TABLE_NAME, null, values);
-//        db.close();\
+//        db.close();
     }
 
     public void addQuestion(Question question) {
@@ -388,7 +396,7 @@ public class DbCreator {
         values = new ContentValues();
         values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
         values.put(MyDB.Therapy.THERAPY_TASK, therapy.getTask());
-        values.put(MyDB.Therapy.THERAPY_DATE, therapy.getDate());
+        values.put(MyDB.Therapy.THERAPY_DATE, dateToString(therapy.getDate()));
 
         db.insert(MyDB.Therapy.TABLE_NAME, null, values);
     }
