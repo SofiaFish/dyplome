@@ -46,7 +46,7 @@
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nbpicker"
+        android:id="@+id/picker_age"
         android:layout_gravity="center" />
 
     <!--    <TextView-->
@@ -59,7 +59,7 @@
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nbpickerweight"
+        android:id="@+id/picker_weight"
         android:layout_gravity="center" />
 
     <Button

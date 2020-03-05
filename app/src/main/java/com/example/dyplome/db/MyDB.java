@@ -61,8 +61,6 @@ public class MyDB {
         public static final String TABLE_NAME = "scoreTest";
     }
 
-
-
     //about tables
 
     public static class User implements BaseColumns {

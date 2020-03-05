@@ -9,16 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dyplome.model.RecyclerItem;
+import com.example.dyplome.model.TestRecyclerItem;
 
 import java.util.ArrayList;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
-    private ArrayList<RecyclerItem> mData;
+    private ArrayList<TestRecyclerItem> mData;
 //    private ItemClickListener mClickListener;
 
-    public RecycleViewAdapter(ArrayList<RecyclerItem> mData) {
+    public RecycleViewAdapter(ArrayList<TestRecyclerItem> mData) {
         this.mData = mData;
     }
 

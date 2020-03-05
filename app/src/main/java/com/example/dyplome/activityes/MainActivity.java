@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dyplome.R;
 import com.example.dyplome.RecycleViewAdapter;
 import com.example.dyplome.RecyclerItemClickListener;
-import com.example.dyplome.model.RecyclerItem;
+import com.example.dyplome.model.TestRecyclerItem;
 
 import java.util.ArrayList;
 
@@ -19,31 +19,28 @@ public class MainActivity extends AppCompatActivity {
 
     RecycleViewAdapter adapter;
     RecyclerView testsList;
-    String testName;
+//    String testName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        ArrayList<String> list_test = new ArrayList<>();
-//        list_test.add("Шкала Бека");
-//        list_test.add("Шкала Гамильтона");
-//        list_test.add("Тест на реакцию");
 
-        ArrayList<RecyclerItem> recyclerItems = new ArrayList<>();
-        recyclerItems.add(new RecyclerItem("Шкала Бека",true));
-        recyclerItems.add(new RecyclerItem("Шкала Гамильтона",false));
-        recyclerItems.add(new RecyclerItem("Тест на реакцию",false));
 
+        ArrayList<TestRecyclerItem> recyclerItems = new ArrayList<>();
+        recyclerItems.add(new TestRecyclerItem("Шкала Бека",true));
+        recyclerItems.add(new TestRecyclerItem("Шкала Гамильтона",false));
+        recyclerItems.add(new TestRecyclerItem("Тест на реакцию",false));
 
         testsList = findViewById(R.id.list_tests);
         testsList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecycleViewAdapter(recyclerItems);
 //        adapter.setOnClickListener(this);
         testsList.setAdapter(adapter);
-        testsList.addOnItemTouchListener(new RecyclerItemClickListener(getApplication(), testsList, new RecyclerItemClickListener.OnItemClickListener() {
+        testsList.addOnItemTouchListener(new RecyclerItemClickListener(getApplication(),
+                testsList, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
 //                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
@@ -60,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case 2:
-                        Intent intnt = new Intent(MainActivity.this, ReactionActivity.class);
-                        startActivity(intnt);
+                        Intent reactionTestIntent = new Intent(MainActivity.this, ReactionActivity.class);
+                        startActivity(reactionTestIntent);
                         break;
                 }
             }
@@ -75,27 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onItemClick(View view, int position) {
-//
-////        DbCreator dbCreator = new DbCreator();
-//        Intent intent = new Intent(MainActivity.this, TestActivity.class);
-//        switch (testName){
-//            case "Шкала Бека":
-//                startActivity(intent);
-//                break;
-//            case "Шкала Гамильтона":
-//                startActivity(intent);
-//                break;
-//            case "Тест на реакцию":
-//                Intent intnt = new Intent(MainActivity.this, ReactionActivity.class);
-//                startActivity(intnt);
-//                break;
-//
-//        }
-//
-//
-//    }
 
 
 }

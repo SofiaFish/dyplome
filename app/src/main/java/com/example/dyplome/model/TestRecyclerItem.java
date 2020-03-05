@@ -1,11 +1,11 @@
 package com.example.dyplome.model;
 
-public class RecyclerItem {
+public class TestRecyclerItem {
 
     private String testName;
     private boolean isPassed;
 
-    public RecyclerItem(String testName, boolean isPassed) {
+    public TestRecyclerItem(String testName, boolean isPassed) {
         this.testName = testName;
         this.isPassed = isPassed;
     }

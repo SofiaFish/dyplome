@@ -37,6 +37,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         creator.addTables();
         creator.createBeck();
         creator.createHamilton();
+        creator.createReactionTest();
     }
 
     @Override

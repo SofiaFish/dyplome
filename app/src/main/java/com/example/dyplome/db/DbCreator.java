@@ -10,6 +10,7 @@ import com.example.dyplome.model.Question;
 import com.example.dyplome.model.Score;
 import com.example.dyplome.model.Test;
 import com.example.dyplome.model.TestModel;
+import com.example.dyplome.model.TestRecyclerItem;
 import com.example.dyplome.model.Therapy;
 import com.example.dyplome.model.User;
 
@@ -306,6 +307,11 @@ public class DbCreator {
         addAnswer(new Answer(1, 37, "1 = осознаю заболевание, но отношу его на счет плохого питания, переутомления, вирусной инфекции, потребности в отдыхе и т.д.", 1));
         addAnswer(new Answer(1, 37, "2 = отрицаю наличие заболевания", 2));
 
+
+    }
+
+    public void createReactionTest(){
+        addTest(new Test(2,"Тест на реакцию"));
     }
 
     public void addTest(Test test) {
@@ -359,6 +365,12 @@ public class DbCreator {
         db.insert(MyDB.User.TABLE_NAME, null, values);
     }
 
+    public boolean userExists(){
+        Cursor cursor = db.query(MyDB.User.TABLE_NAME,null,null,
+                null,null,null,null);
+        return cursor.getCount() > 0;
+    }
+
     public String dateToString(Date date){
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         return formatter.format(date);
@@ -388,7 +400,20 @@ public class DbCreator {
                 Log.d("getTests: ", cursor.getCount() + "");
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
         return list;
+    }
+
+    public ArrayList<TestRecyclerItem> getTestRecyclerItems(){
+        ArrayList<TestRecyclerItem> list = new ArrayList<>();
+
+        Cursor cursor = db.rawQuery("select " + MyDB.Test.NAME + " FROM " + MyDB.Test.TABLE_NAME,null);
+        if (cursor.moveToFirst()){
+            do {
+                list.add(//TODO);
+            }
+        }
     }
 
     public ArrayList<String> getAnswersByQuestion(int questionId, int testId) {
