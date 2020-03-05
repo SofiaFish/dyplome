@@ -308,13 +308,21 @@ public class DbCreator {
 
     }
 
+    public void createTherapy(){
+        addTherapy(new Therapy(0,"Уход за собой", ""));
+        addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
+        addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
+        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
+        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
+    }
+
     public void addTest(Test test) {
         values = new ContentValues();
         values.put(MyDB.Test.ID, test.getId());
         values.put(MyDB.Test.NAME, test.getName());
 
         db.insert(MyDB.Test.TABLE_NAME, null, values);
-//        db.close();
+//        db.close();\
     }
 
     public void addQuestion(Question question) {
@@ -359,16 +367,16 @@ public class DbCreator {
         db.insert(MyDB.User.TABLE_NAME, null, values);
     }
 
-    public String dateToString(Date date){
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-        return formatter.format(date);
-    }
+//    public String dateToString(Date date){
+//        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+//        return formatter.format(date);
+//    }
 
     public void addTherapy(Therapy therapy){
         values = new ContentValues();
         values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
         values.put(MyDB.Therapy.THERAPY_TASK, therapy.getTask());
-        values.put(MyDB.Therapy.THERAPY_DATE, dateToString(therapy.getDate()));
+        values.put(MyDB.Therapy.THERAPY_DATE, therapy.getDate());
 
         db.insert(MyDB.Therapy.TABLE_NAME, null, values);
     }
