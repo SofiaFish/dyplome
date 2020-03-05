@@ -314,13 +314,21 @@ public class DbCreator {
         addTest(new Test(2,"Тест на реакцию"));
     }
 
+    public void createTherapy(){
+        addTherapy(new Therapy(0,"Уход за собой", ""));
+        addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
+        addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
+        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
+        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
+    }
+
     public void addTest(Test test) {
         values = new ContentValues();
         values.put(MyDB.Test.ID, test.getId());
         values.put(MyDB.Test.NAME, test.getName());
 
         db.insert(MyDB.Test.TABLE_NAME, null, values);
-//        db.close();
+//        db.close();\
     }
 
     public void addQuestion(Question question) {
@@ -380,7 +388,7 @@ public class DbCreator {
         values = new ContentValues();
         values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
         values.put(MyDB.Therapy.THERAPY_TASK, therapy.getTask());
-        values.put(MyDB.Therapy.THERAPY_DATE, dateToString(therapy.getDate()));
+        values.put(MyDB.Therapy.THERAPY_DATE, therapy.getDate());
 
         db.insert(MyDB.Therapy.TABLE_NAME, null, values);
     }
@@ -405,16 +413,17 @@ public class DbCreator {
         return list;
     }
 
-    public ArrayList<TestRecyclerItem> getTestRecyclerItems(){
-        ArrayList<TestRecyclerItem> list = new ArrayList<>();
-
-        Cursor cursor = db.rawQuery("select " + MyDB.Test.NAME + " FROM " + MyDB.Test.TABLE_NAME,null);
-        if (cursor.moveToFirst()){
-            do {
-                list.add(//TODO);
-            }
-        }
-    }
+//    public ArrayList<TestRecyclerItem> getTestRecyclerItems(){
+//        ArrayList<TestRecyclerItem> list = new ArrayList<>();
+//
+//        Cursor cursor = db.rawQuery("select " + MyDB.Test.NAME + " FROM " + MyDB.Test.TABLE_NAME,null);
+////        if (cursor.moveToFirst()){
+////            do {
+////                list.add(TODO);
+////            }
+////            while(){};
+////        }
+//    }
 
     public ArrayList<String> getAnswersByQuestion(int questionId, int testId) {
 

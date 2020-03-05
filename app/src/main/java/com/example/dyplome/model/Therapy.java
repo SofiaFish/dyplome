@@ -1,13 +1,14 @@
 package com.example.dyplome.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Therapy {
     int id;
     String task;
-    Date date;
+    String date;
 
-    public Therapy(int id, String task, Date date) {
+    public Therapy(int id, String task, String date) {
         this.id = id;
         this.task = task;
         this.date = date;
@@ -29,11 +30,11 @@ public class Therapy {
         this.task = task;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
