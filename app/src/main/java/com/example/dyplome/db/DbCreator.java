@@ -333,6 +333,12 @@ public class DbCreator {
 //        db.close();
     }
 
+    public void updateTest(Test test){
+        values = new ContentValues();
+        values.put(MyDB.Test.IS_PASSED,test.isPassed());
+        db.update(MyDB.Test.TABLE_NAME, values, MyDB.Test.ID + " = ?", new String[]{test.getId() + ""});
+    }
+
     public void addQuestion(Question question) {
         values = new ContentValues();
         values.put(MyDB.Question.ID_TEST, question.getId_test());

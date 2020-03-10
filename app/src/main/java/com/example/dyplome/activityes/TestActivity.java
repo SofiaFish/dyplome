@@ -15,6 +15,7 @@ import com.example.dyplome.R;
 import com.example.dyplome.db.DataBaseHelper;
 import com.example.dyplome.db.DbCreator;
 import com.example.dyplome.model.Score;
+import com.example.dyplome.model.Test;
 import com.example.dyplome.model.TestModel;
 
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public class TestActivity extends AppCompatActivity {
                         InitTest(tests, position++);
                     } else {
                         creator.addScore(new Score(testId, score));
+                        creator.updateTest(new Test(testId,null,1));
                         intent.putExtra("score", score);
                         intent.putExtra("maxScore", finalMaxScore);
                         startActivity(intent);
