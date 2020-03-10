@@ -45,7 +45,7 @@ public class DbCreator {
     public void createBeck() {
 
         // Add tests
-        addTest(new Test(0, "Шкала Бека"));
+        addTest(new Test(0, "Шкала Бека",0));
         //Beck scale  Questions
         addQuestion(new Question(0, "Чувствуете ли вы себя расстртоенным?"));
         addQuestion(new Question(0, "Чувствуете ли вы тревогу за будущее?"));
@@ -181,12 +181,10 @@ public class DbCreator {
         addAnswer(new Answer(0, 21, "Меня меньше занимают проблемы близости, чем раньше", 1));
         addAnswer(new Answer(0, 21, "Сейчас я значительно меньше интересуюсь сексом, чем раньше", 2));
         addAnswer(new Answer(0, 21, "Я полностью утратил интерес к сексу", 3));
-
-
     }
 
     public void createHamilton() {
-        addTest(new Test(1, "Шкала Гамильтона"));
+        addTest(new Test(1, "Шкала Гамильтона",0));
 
         //Add Questions
         addQuestion(new Question(1, "Депрессивное настроение\n" + "\n" +
@@ -311,15 +309,7 @@ public class DbCreator {
     }
 
     public void createReactionTest(){
-        addTest(new Test(2,"Тест на реакцию"));
-    }
-
-    public void createTherapy(){
-        addTherapy(new Therapy(0,"Уход за собой", ""));
-        addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
-        addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
-        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
-        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
+        addTest(new Test(2,"Тест на реакцию",0));
     }
 
     public void createTherapy(){
@@ -332,8 +322,12 @@ public class DbCreator {
 
     public void addTest(Test test) {
         values = new ContentValues();
-        values.put(MyDB.Test.ID, test.getId());
-        values.put(MyDB.Test.NAME, test.getName());
+        if (test.getId() != null)
+            values.put(MyDB.Test.ID, test.getId());
+        if (test.getName() != null)
+            values.put(MyDB.Test.NAME, test.getName());
+        if (test.isPassed() != null)
+            values.put(MyDB.Test.IS_PASSED, test.isPassed());
 
         db.insert(MyDB.Test.TABLE_NAME, null, values);
 //        db.close();
@@ -396,7 +390,7 @@ public class DbCreator {
         values = new ContentValues();
         values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
         values.put(MyDB.Therapy.THERAPY_TASK, therapy.getTask());
-        values.put(MyDB.Therapy.THERAPY_DATE, dateToString(therapy.getDate()));
+       // values.put(MyDB.Therapy.THERAPY_DATE, dateToString(therapy.getDate()));
 
         db.insert(MyDB.Therapy.TABLE_NAME, null, values);
     }
@@ -404,7 +398,6 @@ public class DbCreator {
     public ArrayList<TestModel> getTests(int testId) {
 
         ArrayList<TestModel> list = new ArrayList<>();
-
 
         Cursor cursor = db.rawQuery("select  * from " + MyDB.Question.TABLE_NAME + " WHERE " +
                 MyDB.Question.ID_TEST + " = ?", new String[]{testId + ""});
@@ -421,17 +414,19 @@ public class DbCreator {
         return list;
     }
 
-//    public ArrayList<TestRecyclerItem> getTestRecyclerItems(){
-//        ArrayList<TestRecyclerItem> list = new ArrayList<>();
-//
-//        Cursor cursor = db.rawQuery("select " + MyDB.Test.NAME + " FROM " + MyDB.Test.TABLE_NAME,null);
-////        if (cursor.moveToFirst()){
-////            do {
-////                list.add(TODO);
-////            }
-////            while(){};
-////        }
-//    }
+    public ArrayList<TestRecyclerItem> getTestRecyclerItems(){
+        ArrayList<TestRecyclerItem> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select * FROM " + MyDB.Test.TABLE_NAME,null);
+        if (cursor.moveToFirst()){
+            do {
+                //FIXME
+                list.add(new TestRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Test.NAME)),
+                        cursor.getInt(cursor.getColumnIndex(MyDB.Test.IS_PASSED))));
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
 
     public ArrayList<String> getAnswersByQuestion(int questionId, int testId) {
 

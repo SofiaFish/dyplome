@@ -3,9 +3,9 @@ package com.example.dyplome.model;
 public class TestRecyclerItem {
 
     private String testName;
-    private boolean isPassed;
+    private int isPassed;
 
-    public TestRecyclerItem(String testName, boolean isPassed) {
+    public TestRecyclerItem(String testName, int isPassed) {
         this.testName = testName;
         this.isPassed = isPassed;
     }
@@ -14,15 +14,7 @@ public class TestRecyclerItem {
         return testName;
     }
 
-    public void setTestName(String testName) {
-        this.testName = testName;
-    }
-
-    public boolean isPassed() {
+    public int isPassed() {
         return isPassed;
-    }
-
-    public void setPassed(boolean passed) {
-        isPassed = passed;
     }
 }

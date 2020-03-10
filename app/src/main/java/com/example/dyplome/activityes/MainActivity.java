@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dyplome.R;
 import com.example.dyplome.RecycleViewAdapter;
 import com.example.dyplome.RecyclerItemClickListener;
+import com.example.dyplome.db.DataBaseHelper;
+import com.example.dyplome.db.DbCreator;
 import com.example.dyplome.model.TestRecyclerItem;
 
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView testsList;
 //    String testName;
 
+    DbCreator creator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +32,14 @@ public class MainActivity extends AppCompatActivity {
 //                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        creator = new DbCreator(DataBaseHelper.getInstance(this).getWritableDatabase());
+//
+//        ArrayList<TestRecyclerItem> recyclerItems = new ArrayList<>();
+//        recyclerItems.add(new TestRecyclerItem("Шкала Бека",true));
+//        recyclerItems.add(new TestRecyclerItem("Шкала Гамильтона",false));
+//        recyclerItems.add(new TestRecyclerItem("Тест на реакцию",false));
 
-        ArrayList<TestRecyclerItem> recyclerItems = new ArrayList<>();
-        recyclerItems.add(new TestRecyclerItem("Шкала Бека",true));
-        recyclerItems.add(new TestRecyclerItem("Шкала Гамильтона",false));
-        recyclerItems.add(new TestRecyclerItem("Тест на реакцию",false));
+        ArrayList<TestRecyclerItem> recyclerItems = creator.getTestRecyclerItems();
 
         testsList = findViewById(R.id.list_tests);
         testsList.setLayoutManager(new LinearLayoutManager(this));

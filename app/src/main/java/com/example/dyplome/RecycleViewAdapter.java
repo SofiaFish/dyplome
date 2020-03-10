@@ -32,19 +32,19 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String tests = mData.get(position).getTestName();
-        boolean isPassed = mData.get(position).isPassed();
+//        boolean isPassed = mData.get(position).isPassed();
+        boolean isPassed = mData.get(position).isPassed() == 1;
         holder.myTextView.setText(tests);
         holder.isPassed.setChecked(isPassed);
 
     }
-
 
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView myTextView;
         CheckBox isPassed;
@@ -54,27 +54,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             myTextView = itemView.findViewById(R.id.test1);
             isPassed = itemView.findViewById(R.id.cb_completed);
         }
-
-//        @Override
-//        public void onClick(View v) {
-//            if(mClickListener != null)
-//                mClickListener.onItemClick(v, getAdapterPosition());
-//        }
     }
-
-//    String getItem(int id) {
-//        return mData.get(id);
-//    }
-
-//    void setClickListener(ItemClickListener itemClickListener) {
-//        this.mClickListener = itemClickListener;
-//    }
-//
-//
-//    public interface ItemClickListener {
-//        void onItemClick(View view, int position);
-//    }
-
 }
 
 

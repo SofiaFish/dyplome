@@ -8,6 +8,7 @@ public class MyDB {
         public static final String ID = "id";
         public static final String TABLE_NAME = "test";
         public static final String NAME = "name";
+        public static final String IS_PASSED = "is_passed";
     }
 
     public static class Score implements BaseColumns {
@@ -78,7 +79,8 @@ public class MyDB {
     public static final String SQL_CREATE_TEST =
             "CREATE TABLE " + Test.TABLE_NAME + " (" +
                     Test.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Test.NAME + " TEXT)";
+                    Test.NAME + " TEXT, "+
+                    Test.IS_PASSED + " INTEGER)";
 
     public static final String SQL_CREATE_SCORE =
             "CREATE TABLE " + Score.TABLE_NAME + " (" +
