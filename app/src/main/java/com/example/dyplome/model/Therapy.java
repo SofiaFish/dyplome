@@ -1,8 +1,5 @@
 package com.example.dyplome.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Therapy {
     int id;
     String task;

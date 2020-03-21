@@ -313,7 +313,7 @@ public class DbCreator {
     }
 
     public void createTherapy(){
-        addTherapy(new Therapy(0,"Уход за собой", ""));
+        addTherapy(new Therapy(0, "Уход за собой", ""));
         addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
         addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
         addTherapy(new Therapy(3,"Учеба - минимум час", ""));

@@ -35,11 +35,11 @@ public class MyDB {
     }
 
     public static  class Therapy implements  BaseColumns{
+        public static final String TABLE_NAME = "therapy";
         public static final String THERAPY_ID = "therapy_id";
-        public static final String TABLE_NAME = "therapy_name";
+        public static final String THERAPY_NAME = "therapy_name";
         public static final String THERAPY_TASK = "therapy_task";
         public static final String THERAPY_DATE = "therapy_date";
-
     }
 
     //inner tables
@@ -115,6 +115,7 @@ public class MyDB {
     public static final String SQL_CREATE_THERAPY =
             "CREATE TABLE " + Therapy.TABLE_NAME + " (" +
                     Therapy.THERAPY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Therapy.THERAPY_NAME + " TEXT, " +
                     Therapy.THERAPY_TASK + " TEXT, " +
                     Therapy.THERAPY_DATE + " TEXT)";
 

@@ -16,6 +16,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dyplome.R;
+import com.example.dyplome.db.DataBaseHelper;
+import com.example.dyplome.db.DbCreator;
+import com.example.dyplome.model.Score;
+import com.example.dyplome.model.Test;
 
 public class ReactionActivity extends AppCompatActivity {
 
@@ -23,6 +27,8 @@ public class ReactionActivity extends AppCompatActivity {
     Button btn_start;
     long start;
     int counter;
+
+    final DbCreator creator = new DbCreator(DataBaseHelper.getInstance(this).getWritableDatabase());
 
     Runnable startTest = new Runnable() {
         @Override
@@ -42,7 +48,7 @@ public class ReactionActivity extends AppCompatActivity {
         btn_start = findViewById(R.id.btn_start);
 
         final Handler handler = new Handler();
-
+        final int testId = getIntent().getIntExtra("testId", -1);
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +86,11 @@ public class ReactionActivity extends AppCompatActivity {
 
                 counter++;
                 Intent intent = new Intent(ReactionActivity.this, ResultActivity.class);
-                if (counter == 5)
+                if (counter == 5) {
+                    creator.addScore(new Score(testId, 1));
+                    creator.updateTest(new Test(testId, null, 1));
                     startActivity(intent);
+                }
             }
         });
     }

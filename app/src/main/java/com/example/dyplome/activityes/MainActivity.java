@@ -3,6 +3,7 @@ package com.example.dyplome.activityes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,30 +17,28 @@ import com.example.dyplome.db.DbCreator;
 import com.example.dyplome.model.TestRecyclerItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RecycleViewAdapter adapter;
     RecyclerView testsList;
-//    String testName;
-
+    Button startTherapy;
     DbCreator creator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        startTherapy = findViewById(R.id.start_therapy);
 
         creator = new DbCreator(DataBaseHelper.getInstance(this).getWritableDatabase());
-//
-//        ArrayList<TestRecyclerItem> recyclerItems = new ArrayList<>();
-//        recyclerItems.add(new TestRecyclerItem("Шкала Бека",true));
-//        recyclerItems.add(new TestRecyclerItem("Шкала Гамильтона",false));
-//        recyclerItems.add(new TestRecyclerItem("Тест на реакцию",false));
 
         ArrayList<TestRecyclerItem> recyclerItems = creator.getTestRecyclerItems();
+
+        if (allTestsPassed(recyclerItems)) {
+            startTherapy.setEnabled(true);
+        }
 
         testsList = findViewById(R.id.list_tests);
         testsList.setLayoutManager(new LinearLayoutManager(this));
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 testsList, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, TestActivity.class);
 
                 switch (position) {
@@ -65,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         Intent reactionTestIntent = new Intent(MainActivity.this, ReactionActivity.class);
+                        reactionTestIntent.putExtra("testId", 2);
                         startActivity(reactionTestIntent);
                         break;
                 }
@@ -76,9 +75,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }));
-
     }
 
+    private boolean allTestsPassed(List<TestRecyclerItem> testRecyclerItems) {
+        int testPassed = 0;
+        for (TestRecyclerItem item : testRecyclerItems) {
+            testPassed += item.isPassed();
 
+        }
+        return testPassed == testRecyclerItems.size();
+    }
 
 }
