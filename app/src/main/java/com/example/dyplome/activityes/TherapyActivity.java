@@ -32,7 +32,7 @@ public class TherapyActivity extends AppCompatActivity {
 
         ArrayList<TherapyRecyclerItem> recyclerItems = creator.getTherapyRecyclerItems();
 
-        therapyList = findViewById(R.id.list_tasks);
+        therapyList = findViewById(R.id.list_therapy);
         therapyList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new TherapyRecyclerViewAdapter(recyclerItems);
         therapyList.setAdapter(adapter);
@@ -40,21 +40,23 @@ public class TherapyActivity extends AppCompatActivity {
                 therapyList, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(TherapyActivity.this, TestActivity.class);
+                Intent intent;
 
                 switch (position) {
                     case 0:
+                        intent = new Intent(TherapyActivity.this, DiaryActivity.class);
                         intent.putExtra("therapyId", 0);
                         startActivity(intent);
                         break;
                     case 1:
+                        intent = new Intent(TherapyActivity.this, TaskActivity.class);
                         intent.putExtra("therapyId", 1);
                         startActivity(intent);
                         break;
                     case 2:
-                        Intent reactionTestIntent = new Intent(TherapyActivity.this, ReactionActivity.class);
-                        reactionTestIntent.putExtra("therapyId", 2);
-                        startActivity(reactionTestIntent);
+                        intent = new Intent(TherapyActivity.this, RecourcesActivity.class);
+                        intent.putExtra("therapyId", 2);
+                        startActivity(intent);
                         break;
                 }
             }

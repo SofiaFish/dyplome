@@ -8,6 +8,7 @@ import android.util.Log;
 import com.example.dyplome.model.Answer;
 import com.example.dyplome.model.Question;
 import com.example.dyplome.model.Score;
+import com.example.dyplome.model.Task;
 import com.example.dyplome.model.Test;
 import com.example.dyplome.model.TestModel;
 import com.example.dyplome.model.TestRecyclerItem;
@@ -314,12 +315,20 @@ public class DbCreator {
     }
 
     public void createTherapy(){
-        addTherapy(new Therapy(0, "Уход за собой", ""));
-        addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
-        addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
-        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
-        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
+        addTherapy(new Therapy("Дневник настроения"));
+        addTherapy(new Therapy("Ежедневные задания"));
+        addTherapy(new Therapy("Азбука ресурсов"));
     }
+
+//    public void createTask(){
+//        addTask(new Task(0, "Уход за собой", ""));
+//        addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
+//        addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
+//        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
+//        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
+//    }
+//
+
 
     public void addTest(Test test) {
         values = new ContentValues();
@@ -393,13 +402,22 @@ public class DbCreator {
         return formatter.format(date);
     }
 
-    public void addTherapy(Therapy therapy){
+    public void addTherapy(Therapy therapy) {
         values = new ContentValues();
         values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
-        values.put(MyDB.Therapy.THERAPY_TASK, therapy.getTask());
-       // values.put(MyDB.Therapy.THERAPY_DATE, dateToString(therapy.getDate()));
+        values.put(MyDB.Therapy.THERAPY_NAME, therapy.getTherapy_name());
 
-        db.insert(MyDB.Therapy.TABLE_NAME, null, values);
+        db.insert(MyDB.Task.TABLE_NAME, null, values);
+
+    }
+
+    public void addTask(Task task){
+        values = new ContentValues();
+        values.put(MyDB.Task.TASK_ID, task.getId());
+        values.put(MyDB.Task.TASK, task.getTask());
+        values.put(MyDB.Task.TASK_NAME, task.getTask_name());
+
+        db.insert(MyDB.Task.TABLE_NAME, null, values);
     }
 
     public ArrayList<TestModel> getTests(int testId) {
