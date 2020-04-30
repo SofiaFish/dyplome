@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dyplome.R;
-import com.example.dyplome.RecycleViewAdapter;
+import com.example.dyplome.TestRecycleViewAdapter;
 import com.example.dyplome.RecyclerItemClickListener;
 import com.example.dyplome.db.DataBaseHelper;
 import com.example.dyplome.db.DbCreator;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecycleViewAdapter adapter;
+    TestRecycleViewAdapter adapter;
     RecyclerView testsList;
     Button startTherapy;
     DbCreator creator;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         testsList = findViewById(R.id.list_tests);
         testsList.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecycleViewAdapter(recyclerItems);
+        adapter = new TestRecycleViewAdapter(recyclerItems);
 //        adapter.setOnClickListener(this);
         testsList.setAdapter(adapter);
         testsList.addOnItemTouchListener(new RecyclerItemClickListener(getApplication(),

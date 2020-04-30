@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activityes.TherapyActivity"></activity>
+        <activity android:name=".activityes.Main2Activity"></activity>
+        <activity android:name=".activityes.MoodTrackerActivity" />
+        <activity android:name=".activityes.DiaryActivity" />
+        <activity android:name=".activityes.TaskActivity" />
+        <activity android:name=".activityes.TherapyActivity" />
         <activity android:name=".activityes.ResultActivity" />
         <activity android:name=".activityes.AboutActivity">
             <intent-filter>

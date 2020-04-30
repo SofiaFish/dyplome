@@ -13,12 +13,12 @@ import com.example.dyplome.model.TestRecyclerItem;
 
 import java.util.ArrayList;
 
-public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
+public class TestRecycleViewAdapter extends RecyclerView.Adapter<TestRecycleViewAdapter.MyViewHolder> {
 
     private ArrayList<TestRecyclerItem> mData;
 //    private ItemClickListener mClickListener;
 
-    public RecycleViewAdapter(ArrayList<TestRecyclerItem> mData) {
+    public TestRecycleViewAdapter(ArrayList<TestRecyclerItem> mData) {
         this.mData = mData;
     }
 
@@ -31,7 +31,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String tests = mData.get(position).getTestName();
+        String tests = mData.get(position).getName();
 //        boolean isPassed = mData.get(position).isPassed();
         boolean isPassed = mData.get(position).isPassed() == 1;
         holder.myTextView.setText(tests);

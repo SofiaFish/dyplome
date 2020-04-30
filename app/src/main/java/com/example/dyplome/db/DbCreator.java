@@ -12,6 +12,7 @@ import com.example.dyplome.model.Test;
 import com.example.dyplome.model.TestModel;
 import com.example.dyplome.model.TestRecyclerItem;
 import com.example.dyplome.model.Therapy;
+import com.example.dyplome.model.TherapyRecyclerItem;
 import com.example.dyplome.model.User;
 
 import java.text.SimpleDateFormat;
@@ -433,6 +434,20 @@ public class DbCreator {
         cursor.close();
         return list;
     }
+
+    public ArrayList<TherapyRecyclerItem> getTherapyRecyclerItems(){
+        ArrayList<TherapyRecyclerItem> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select * FROM " + MyDB.Therapy.TABLE_NAME,null);
+        if (cursor.moveToFirst()){
+            do {
+                //FIXME
+                list.add(new TherapyRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Therapy.TABLE_NAME))));
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
+
 
     public ArrayList<String> getAnswersByQuestion(int questionId, int testId) {
 
