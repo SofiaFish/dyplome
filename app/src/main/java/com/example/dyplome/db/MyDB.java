@@ -35,7 +35,7 @@ public class MyDB {
     }
 
     public static class Therapy implements BaseColumns{
-        public static final String TABLE_NAME = "name";
+        public static final String TABLE_NAME = "therapy";
         public static final String THERAPY_ID = "id";
         public static final String THERAPY_NAME = "therapy_name";
     }
@@ -107,7 +107,6 @@ public class MyDB {
                     Answer.SCORE + " INTEGER)";
 
     //about tables
-
     public static final String SQL_CREATE_USER =
             "CREATE TABLE " + User.TABLE_NAME + " (" +
                     User.ID + " INTEGER PRIMARY KEY, " +
@@ -128,9 +127,7 @@ public class MyDB {
                     Task.TASK_NAME + " TEXT, " +
                     Task.TASK + " TEXT )";
 
-
     //inner tables
-
     public static final String SQL_CREATE_TEST_QUESTION =
             "CREATE TABLE " + TestQuestion.TABLE_NAME + " (" +
                     TestQuestion.TEST_ID + " INTEGER, " +

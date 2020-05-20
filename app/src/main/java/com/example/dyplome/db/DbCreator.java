@@ -41,7 +41,6 @@ public class DbCreator {
         db.execSQL(MyDB.SQL_CREATE_TEST_QUESTION);
         db.execSQL(MyDB.SQL_CREATE_USER);
         db.execSQL(MyDB.SQL_CREATE_THERAPY);
-
     }
 
     public void createBeck() {
@@ -404,10 +403,10 @@ public class DbCreator {
 
     public void addTherapy(Therapy therapy) {
         values = new ContentValues();
-        values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
+//        values.put(MyDB.Therapy.THERAPY_ID, therapy.getId());
         values.put(MyDB.Therapy.THERAPY_NAME, therapy.getTherapy_name());
 
-        db.insert(MyDB.Task.TABLE_NAME, null, values);
+        db.insert(MyDB.Therapy.TABLE_NAME, null, values);
 
     }
 
@@ -459,7 +458,7 @@ public class DbCreator {
         if (cursor.moveToFirst()){
             do {
                 //FIXME
-                list.add(new TherapyRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Therapy.TABLE_NAME))));
+                list.add(new TherapyRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Therapy.THERAPY_NAME))));
             } while(cursor.moveToNext());
         }
         cursor.close();

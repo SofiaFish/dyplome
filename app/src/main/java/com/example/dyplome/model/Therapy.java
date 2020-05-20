@@ -3,7 +3,6 @@ package com.example.dyplome.model;
 public class Therapy {
     int id;
     String therapy_name;
-    String teble_name;
 
     public Therapy(String therapy_name) {
         this.therapy_name = therapy_name;
