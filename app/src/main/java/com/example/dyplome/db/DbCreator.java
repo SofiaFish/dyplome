@@ -441,7 +441,7 @@ public class DbCreator {
         if (cursor.moveToFirst()){
             do {
                 //FIXME
-                list.add(new TherapyRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Therapy.TABLE_NAME))));
+                list.add(new TherapyRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Therapy.TABLE_NAME ))));
             } while(cursor.moveToNext());
         }
         cursor.close();

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.dyplome.R;
-import com.example.dyplome.RecycleViewAdapter;
+//import com.example.dyplome.RecycleViewAdapter;
 import com.example.dyplome.db.DbCreator;
 
 public class TaskActivity extends AppCompatActivity {
