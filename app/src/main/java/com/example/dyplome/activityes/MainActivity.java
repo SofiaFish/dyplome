@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (allTestsPassed(recyclerItems)) {
             startTherapy.setEnabled(true);
+
         }
 
         testsList = findViewById(R.id.list_tests);
@@ -69,12 +70,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-
             @Override
             public void onLongItemClick(View view, int position) {
 
             }
         }));
+
+        startTherapy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent therapy = new Intent(MainActivity.this, TherapyActivity.class);
+                startActivity(therapy);
+            }
+        });
+
+
     }
 
     private boolean allTestsPassed(List<TestRecyclerItem> testRecyclerItems) {

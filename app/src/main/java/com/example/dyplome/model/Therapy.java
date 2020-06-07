@@ -2,36 +2,17 @@ package com.example.dyplome.model;
 
 public class Therapy {
     int id;
-    String task;
-    String date;
+    String therapy_name;
 
-    public Therapy(int id, String task, String date) {
-        this.id = id;
-        this.task = task;
-        this.date = date;
+    public Therapy(String therapy_name) {
+        this.therapy_name = therapy_name;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTask() {
-        return task;
-    }
-
-    public void setTask(String task) {
-        this.task = task;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    public String getTherapy_name() {
+        return therapy_name;
     }
 }

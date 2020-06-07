@@ -34,12 +34,17 @@ public class MyDB {
         public static final String SCORE = "score";
     }
 
-    public static  class Therapy implements  BaseColumns{
+    public static class Therapy implements BaseColumns{
         public static final String TABLE_NAME = "therapy";
-        public static final String THERAPY_ID = "therapy_id";
+        public static final String THERAPY_ID = "id";
         public static final String THERAPY_NAME = "therapy_name";
-        public static final String THERAPY_TASK = "therapy_task";
-        public static final String THERAPY_DATE = "therapy_date";
+    }
+
+    public static  class Task implements  BaseColumns{
+        public static final String TABLE_NAME = "task";
+        public static final String TASK_ID = "task_id";
+        public static final String TASK_NAME = "task_name";
+        public static final String TASK = "task_task";
     }
 
     //inner tables
@@ -102,7 +107,6 @@ public class MyDB {
                     Answer.SCORE + " INTEGER)";
 
     //about tables
-
     public static final String SQL_CREATE_USER =
             "CREATE TABLE " + User.TABLE_NAME + " (" +
                     User.ID + " INTEGER PRIMARY KEY, " +
@@ -115,12 +119,15 @@ public class MyDB {
     public static final String SQL_CREATE_THERAPY =
             "CREATE TABLE " + Therapy.TABLE_NAME + " (" +
                     Therapy.THERAPY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Therapy.THERAPY_NAME + " TEXT, " +
-                    Therapy.THERAPY_TASK + " TEXT, " +
-                    Therapy.THERAPY_DATE + " TEXT)";
+                    Therapy.THERAPY_NAME + " TEXT )";
+
+    public static final String SQL_CREATE_TASK =
+            "CREATE TABLE " + Task.TABLE_NAME + " (" +
+                    Task.TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Task.TASK_NAME + " TEXT, " +
+                    Task.TASK + " TEXT )";
 
     //inner tables
-
     public static final String SQL_CREATE_TEST_QUESTION =
             "CREATE TABLE " + TestQuestion.TABLE_NAME + " (" +
                     TestQuestion.TEST_ID + " INTEGER, " +

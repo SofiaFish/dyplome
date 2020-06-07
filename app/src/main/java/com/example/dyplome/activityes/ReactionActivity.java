@@ -85,7 +85,7 @@ public class ReactionActivity extends AppCompatActivity {
                 }
 
                 counter++;
-                Intent intent = new Intent(ReactionActivity.this, ResultActivity.class);
+                Intent intent = new Intent(ReactionActivity.this, ReactionResultActivity.class);
                 if (counter == 5) {
                     creator.addScore(new Score(testId, 1));
                     creator.updateTest(new Test(testId, null, 1));

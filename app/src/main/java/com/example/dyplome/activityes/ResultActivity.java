@@ -23,11 +23,14 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         btn_ok = findViewById(R.id.btn_ok);
+        
 
         int score = getIntent().getIntExtra("score", -1);
         int maxScore = getIntent().getIntExtra("maxScore", -1);
         result = findViewById(R.id.result);
         result.setText(score + "/" + maxScore);
+
+
 
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
