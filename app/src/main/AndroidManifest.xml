@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activityes.ReactionResultActivity"></activity>
+        <activity
+            android:name=".activityes.RecoursesActivity"
+            android:label="@string/title_activity_recourses"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activityes.ReactionResultActivity" />
         <activity android:name=".activityes.RecourcesActivity" />
         <activity android:name=".activityes.Main2Activity" />
         <activity android:name=".activityes.MoodTrackerActivity" />

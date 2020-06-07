@@ -54,7 +54,7 @@ public class TherapyActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 2:
-                        intent = new Intent(TherapyActivity.this, RecourcesActivity.class);
+                        intent = new Intent(TherapyActivity.this, RecoursesActivity.class);
                         intent.putExtra("therapyId", 2);
                         startActivity(intent);
                         break;
