@@ -457,7 +457,6 @@ public class DbCreator {
         Cursor cursor = db.rawQuery("select * FROM " + MyDB.Therapy.TABLE_NAME,null);
         if (cursor.moveToFirst()){
             do {
-                list.add(new TherapyRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Therapy.TABLE_NAME ))));
                 list.add(new TherapyRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Therapy.THERAPY_NAME))));
 
             } while(cursor.moveToNext());
