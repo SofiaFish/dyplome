@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.dyplome.model.Answer;
 import com.example.dyplome.model.Question;
+import com.example.dyplome.model.Resources;
 import com.example.dyplome.model.Score;
 import com.example.dyplome.model.Task;
 import com.example.dyplome.model.Test;
@@ -326,7 +327,7 @@ public class DbCreator {
 //        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
 //        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
 //    }
-//
+
 
 
     public void addTest(Test test) {
@@ -419,6 +420,13 @@ public class DbCreator {
         db.insert(MyDB.Task.TABLE_NAME, null, values);
     }
 
+    public void addResource(Resources resource){
+        values = new ContentValues();
+        values.put(MyDB.Resources.RESOURCE, resource.getResource());
+
+        db.insert(MyDB.Resources.TABLE_NAME, null, values);
+    }
+
     public ArrayList<TestModel> getTests(int testId) {
 
         ArrayList<TestModel> list = new ArrayList<>();
@@ -481,4 +489,17 @@ public class DbCreator {
         return list;
     }
 
+
+    public ArrayList<String> getResources(int res_type){
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select " + MyDB.Resources.RESOURCE + " from " + MyDB.Resources.TABLE_NAME, null);
+
+        if (cursor.moveToNext()) {
+            do {
+                list.add(cursor.getString(cursor.getColumnIndex(MyDB.Resources.RESOURCE)));
+            } while (cursor.moveToNext());
+        }
+
+        return list;
+    }
 }

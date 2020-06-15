@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,14 +15,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.dyplome.R;
+import com.example.dyplome.db.DataBaseHelper;
+import com.example.dyplome.db.DbCreator;
+import com.example.dyplome.model.Resources;
 
-
-/**
- * A placeholder fragment containing a simple view.
- */
 public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+
+    public static final int TYPE_EMOTION = 1;
+    public static final int TYPE_INTELLECT = 2;
+    public static final int TYPE_BODY = 3;
 
     private PageViewModel pageViewModel;
 
@@ -35,7 +40,7 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
+        pageViewModel = ViewModelProviders.of(this,).get(PageViewModel.class);
         int index = 1;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
@@ -45,11 +50,19 @@ public class PlaceholderFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_recourses, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
-        pageViewModel.getText().observe(this, new Observer<String>() {
+        Button button = root.findViewById(R.id.button2);
+        final EditText resource = root.findViewById(R.id.resource);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DbCreator creator = new DbCreator(DataBaseHelper.getInstance(getActivity()).getWritableDatabase());
+                creator.addResource(new Resources(resource.getText().toString()));
+            }
+        });
+        final TextView textView = root.findViewById(R.id.textView);
+        pageViewModel.getStoredResources().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

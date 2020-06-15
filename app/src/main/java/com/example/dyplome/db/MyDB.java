@@ -47,6 +47,13 @@ public class MyDB {
         public static final String TASK = "task_task";
     }
 
+    public static class Resources implements BaseColumns{
+        public static final String TABLE_NAME = "resources";
+        public static final String RESOURCE_ID = "resource_id";
+        public static final String RESOURCE = "resource";
+        public static final String RESOURCE_TYPE = "resource_type";
+    }
+
     //inner tables
 
     public static class TestQuestion implements BaseColumns {
@@ -125,7 +132,13 @@ public class MyDB {
             "CREATE TABLE " + Task.TABLE_NAME + " (" +
                     Task.TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Task.TASK_NAME + " TEXT, " +
-                    Task.TASK + " TEXT )";
+                    Task.TASK + " TEXT)";
+
+    public static final String SQL_CREATE_RESOURCES =
+            "CREATE TABLE " + Resources.TABLE_NAME + " (" +
+                    Resources.RESOURCE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Resources.RESOURCE + " TEXT, " +
+                    Resources.RESOURCE_TYPE + " INTEGER)";
 
     //inner tables
     public static final String SQL_CREATE_TEST_QUESTION =
