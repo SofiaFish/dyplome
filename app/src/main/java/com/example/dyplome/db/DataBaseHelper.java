@@ -12,7 +12,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static DataBaseHelper mInstance = null;
 
-    private Context mCxt;
+//    private Context mCxt;
     public static final String DB_NAME = "appDB";
     public static final int DB_VERSION = 1;
 
@@ -25,7 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private DataBaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        this.mCxt = context;
+//        this.mCxt = context;
     }
     //private static final String LOG_TAG = "myLog";
 
@@ -38,6 +38,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         creator.createHamilton();
         creator.createReactionTest();
         creator.createTherapy();
+        creator.createTask();
     }
 
     @Override

@@ -1,21 +1,19 @@
 package com.example.dyplome.model;
 
 public class Task {
-    String table_name;
+//    String table_name;
     int id;
     String task_name;
     String task;
 
-    public Task(String table_name, int id, String task_name, String task) {
-        this.table_name = table_name;
+    public Task(int id, String task) {
         this.id = id;
-        this.task_name = task_name;
         this.task = task;
     }
 
-    public String getTable_name() {
-        return table_name;
-    }
+//    public String getTable_name() {
+//        return table_name;
+//    }
 
     public int getId() {
         return id;

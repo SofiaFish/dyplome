@@ -10,6 +10,7 @@ import com.example.dyplome.model.Question;
 import com.example.dyplome.model.Resources;
 import com.example.dyplome.model.Score;
 import com.example.dyplome.model.Task;
+import com.example.dyplome.model.TaskRecyclerItem;
 import com.example.dyplome.model.Test;
 import com.example.dyplome.model.TestModel;
 import com.example.dyplome.model.TestRecyclerItem;
@@ -42,6 +43,7 @@ public class DbCreator {
         db.execSQL(MyDB.SQL_CREATE_TEST_QUESTION);
         db.execSQL(MyDB.SQL_CREATE_USER);
         db.execSQL(MyDB.SQL_CREATE_THERAPY);
+        db.execSQL(MyDB.SQL_CREATE_TASK);
     }
 
     public void createBeck() {
@@ -320,13 +322,13 @@ public class DbCreator {
         addTherapy(new Therapy("Азбука ресурсов"));
     }
 
-//    public void createTask(){
-//        addTask(new Task(0, "Уход за собой", ""));
-//        addTherapy(new Therapy(1,"Физическая активность - 30 минут", ""));
-//        addTherapy(new Therapy(2,"Чтение - 2 часа в день", ""));
-//        addTherapy(new Therapy(3,"Учеба - минимум час", ""));
-//        addTherapy(new Therapy(4,"Заняться своим хобби", ""));
-//    }
+    public void createTask(){
+        addTask(new Task(0, "Уход за собой"));
+        addTask(new Task(1,"Физическая активность - 30 минут"));
+        addTask(new Task(2,"Чтение - 2 часа в день"));
+        addTask(new Task(3,"Учеба - минимум час"));
+        addTask(new Task(4,"Заняться своим хобби"));
+    }
 
 
 
@@ -415,7 +417,6 @@ public class DbCreator {
         values = new ContentValues();
         values.put(MyDB.Task.TASK_ID, task.getId());
         values.put(MyDB.Task.TASK, task.getTask());
-        values.put(MyDB.Task.TASK_NAME, task.getTask_name());
 
         db.insert(MyDB.Task.TABLE_NAME, null, values);
     }
@@ -459,6 +460,19 @@ public class DbCreator {
         cursor.close();
         return list;
     }
+
+    public ArrayList<TaskRecyclerItem> getTaskRecyclerItems(){
+        ArrayList<TaskRecyclerItem> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select * FROM " + MyDB.Task.TABLE_NAME,null);
+        if (cursor.moveToFirst()){
+            do {
+                list.add(new TaskRecyclerItem(cursor.getString(cursor.getColumnIndex(MyDB.Task.TASK))));
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
+
 
     public ArrayList<TherapyRecyclerItem> getTherapyRecyclerItems(){
         ArrayList<TherapyRecyclerItem> list = new ArrayList<>();

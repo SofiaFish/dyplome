@@ -43,7 +43,6 @@ public class MyDB {
     public static  class Task implements  BaseColumns{
         public static final String TABLE_NAME = "task";
         public static final String TASK_ID = "task_id";
-        public static final String TASK_NAME = "task_name";
         public static final String TASK = "task_task";
     }
 
@@ -131,7 +130,6 @@ public class MyDB {
     public static final String SQL_CREATE_TASK =
             "CREATE TABLE " + Task.TABLE_NAME + " (" +
                     Task.TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Task.TASK_NAME + " TEXT, " +
                     Task.TASK + " TEXT)";
 
     public static final String SQL_CREATE_RESOURCES =
