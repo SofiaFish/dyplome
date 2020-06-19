@@ -29,6 +29,10 @@ public class PlaceholderFragment extends Fragment {
 
     private PageViewModel pageViewModel;
 
+    Button btnAdd;
+    EditText enterResource;
+    TextView resourcesList;
+
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle bundle = new Bundle();
@@ -46,28 +50,31 @@ public class PlaceholderFragment extends Fragment {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
         pageViewModel.setIndex(index);
+
     }
 
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_recourses, container, false);
-        Button button = root.findViewById(R.id.button2);
-        final EditText resource = root.findViewById(R.id.resource);
+        Button button = root.findViewById(R.id.button_add);
+        final EditText enterResource = root.findViewById(R.id.resource);
+        resourcesList = root.findViewById(R.id.resources_list);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DbCreator creator = new DbCreator(DataBaseHelper.getInstance(getActivity()).getWritableDatabase());
-                creator.addResource(new Resources(resource.getText().toString()));
+                creator.addResource(new Resources(enterResource.getText().toString()));
+
+                if(!enterResource.getText().toString().isEmpty()){
+                    resourcesList.append(enterResource.getText().toString() + " , ");
+                    enterResource.setText("");
+                }
             }
         });
-        final TextView textView = root.findViewById(R.id.textView);
-        pageViewModel.getStoredResources().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+
+
         return root;
     }
 }

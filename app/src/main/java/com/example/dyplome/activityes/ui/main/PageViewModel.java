@@ -1,6 +1,8 @@
 package com.example.dyplome.activityes.ui.main;
 
 import android.content.Context;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
