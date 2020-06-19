@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
-
+import com.example.dyplome.db.DataBaseHelper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dyplome.R;
-import com.example.dyplome.db.DataBaseHelper;
+
 import com.example.dyplome.db.DbCreator;
 import com.example.dyplome.model.User;
 

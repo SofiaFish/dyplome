@@ -13,19 +13,19 @@ import com.example.dyplome.db.DbCreator;
 
 public class PageViewModel extends ViewModel {
 
-    Context context;
+//    Context context;
 
-    public PageViewModel(Context context) {
-        this.context = context;
+    public PageViewModel(/*Context context*/) {
+//        this.context = context;
     }
 
     private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
     private LiveData<String> mText = Transformations.map(mIndex, new Function<Integer, String>() {
         @Override
         public String apply(Integer input) {
-            DbCreator creator = new DbCreator(DataBaseHelper.getInstance(context).getWritableDatabase());
-//            return "Hello world from section: " + input;
-            return creator.getResources(input).toString();
+//            DbCreator creator = new DbCreator(DataBaseHelper.getInstance(context).getWritableDatabase());
+            return "Hello world from section: " + input;
+//            return creator.getResources(input).toString();
         }
     });
 
