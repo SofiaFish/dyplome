@@ -12,7 +12,7 @@
         android:id="@+id/result_reaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="192dp"
         android:lines="8"
         android:maxWidth="170dp"
         android:text="до 150 мс - Превосходно
@@ -26,17 +26,21 @@
         от 500 и выше -  Вы мертвы"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_okr"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
         android:layout_marginTop="428dp"
+        android:background="#D5C9C9"
         android:text="Ok"
+        android:textColor="#C3A7A7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

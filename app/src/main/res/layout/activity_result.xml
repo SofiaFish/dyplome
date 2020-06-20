@@ -25,10 +25,12 @@
 
     <Button
         android:id="@+id/btn_ok"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/result"
         android:layout_centerInParent="true"
-        android:text="Ok"
-        android:layout_below="@+id/result"/>
+        android:backgroundTint="#D5C9C9"
+        android:text="Ok" />
 
 </RelativeLayout>

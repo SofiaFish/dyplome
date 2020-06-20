@@ -20,11 +20,13 @@
 
     <Button
         android:id="@+id/start_therapy"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="Start therapy"
+        android:backgroundTint="#D5C9C9"
         android:enabled="false"
+        android:text="Start therapy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

@@ -10,11 +10,14 @@
     android:clickable="true">
 
     <Button
+        android:id="@+id/btn_start"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_start"
+        android:layout_centerInParent="true"
+        android:background="#D5C9C9"
         android:text="Start"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:textColor="#8E7373"
+        android:textColorLink="#DFD3D3" />
 
 </RelativeLayout>

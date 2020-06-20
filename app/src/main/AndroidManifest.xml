@@ -16,9 +16,6 @@
             android:label="@string/title_activity_recourses"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".activityes.ReactionResultActivity" />
-        <activity android:name=".activityes.RecourcesActivity" />
-        <activity android:name=".activityes.Main2Activity" />
-        <activity android:name=".activityes.MoodTrackerActivity" />
         <activity android:name=".activityes.DiaryActivity" />
         <activity android:name=".activityes.TaskActivity" />
         <activity android:name=".activityes.TherapyActivity" />

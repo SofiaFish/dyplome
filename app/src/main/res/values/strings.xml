@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dyplome</string>
+    <string name="app_name">Neway</string>
     <string name="title_activity_recourses">RecoursesActivity</string>
     <string name="tab_text_1">Эмоции</string>
     <string name="tab_text_2">Интеллект</string>
